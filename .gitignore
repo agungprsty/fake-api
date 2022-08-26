@@ -12,7 +12,7 @@ Homestead.yaml
 .idea/
 
 # configuration
-config/*.php
+# config/*.php
 
 # docker file
 /docker/mysql/*
