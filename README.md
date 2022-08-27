@@ -1,11 +1,11 @@
-# Fake API
+# JSONFaker
 
 <p align="center">
-    <img src="https://afindo-inf.com/assets/public/img/blog/bbace49a6c7fe7993946ec4a4b2c5c8c.png" alt="fake-api">
+    <img src="public/assets/img/restapi.png" alt="JSONFaker restapi">
 </p>
 
 ## Introduction
-Free fake API for testing and prototyping.
+Free fake REST API for testing and prototyping.
 
 ### Requirement
 - PHP ^8.0
