@@ -24,7 +24,7 @@
                         <div class="orange"></div>
                         <div class="green"></div>
                     </div>
-                    <pre class="language-javascript line-numbers"><code class="language-javascript">fetch('https://fake-api-lumen.herokuapp.com/api/posts/1')
+                    <pre class="language-javascript line-numbers"><code class="language-javascript">fetch('https://json-faker.herokuapp.com/api/posts/1')
     .then(response => response.json())
     .then(json => console.log(json))</code></pre>
                 </div>
@@ -59,7 +59,7 @@
 
 @push('script')
 <script>
-    const url = "api/post/1";
+    const url = "api/posts/1";
     const btn_run = "#run";
     const result = "#result";
     const congrats = "#congrats";
