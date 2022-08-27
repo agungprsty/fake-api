@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\AuthRepository;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,5 +21,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             AuthRepository::class,
         );
+    }
+
+    public function boot()
+    {
+        if(env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
     }
 }

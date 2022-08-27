@@ -5,7 +5,7 @@ $router->group([
 ], function () use ($router) {
     // Profile 
     $router->group([
-        'prefix' => 'user'
+        'prefix' => 'users'
     ], function ($router) {
         $router->get('', 'UserController@all');
         $router->post('', 'UserController@store');
@@ -16,7 +16,7 @@ $router->group([
 
     // Post 
     $router->group([
-        'prefix' => 'post'
+        'prefix' => 'posts'
     ], function ($router) {
         $router->get('', 'PostController@all');
         $router->post('', 'PostController@store');
@@ -27,7 +27,7 @@ $router->group([
 
     // todos 
     $router->group([
-        'prefix' => 'todo'
+        'prefix' => 'todos'
     ], function ($router) {
         $router->get('', 'TodoController@all');
         $router->post('', 'TodoController@store');
@@ -38,7 +38,7 @@ $router->group([
 
     // comment 
     $router->group([
-        'prefix' => 'comment'
+        'prefix' => 'comments'
     ], function ($router) {
         $router->get('', 'CommentController@all');
         $router->post('', 'CommentController@store');
