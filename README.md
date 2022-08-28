@@ -29,6 +29,11 @@ logging.php.example -> logging.php
 ```
 
 ### Running service
-```         
+```bash      
 php -S 0.0.0.0:8000 -t public
+```
+
+### Generate docs swagger-php
+```bash
+./vendor/bin/openapi app -o public/assets/api-docs.json
 ```

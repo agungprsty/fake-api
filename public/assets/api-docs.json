@@ -1,0 +1,88 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "JSONFaker Documentation",
+        "description": "JSONFaker Free Fake REST API",
+        "contact": {
+            "email": "agungprsty423@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "wkwkwkwk",
+            "description": "JSONFaker Documentation"
+        }
+    ],
+    "paths": {
+        "/posts": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "List of post",
+                "operationId": "b87fb62dce5bb371e0b3fe8fd22a2479",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List of post",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "uid": 1
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Get by id post",
+                "operationId": "e5b5bcde911c3429146a2d1b202ed50e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "description": "JWT access token",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc..."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

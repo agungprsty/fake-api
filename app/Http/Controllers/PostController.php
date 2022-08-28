@@ -7,6 +7,29 @@ use App\Http\Requests\PostRequest;
 use App\Repositories\PostRepository;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Response;
+use OpenApi\Annotations as OA;
+
+define("API_HOST", "wkwkwkwk");
+
+/**
+ * @OA\Info(
+ *   title="JSONFaker Documentation",
+ *   description="JSONFaker Free Fake REST API",
+ *   version="1.0.0",
+ *   @OA\Contact(
+ *     email="agungprsty423@gmail.com"
+ *   ),
+ *   @OA\License(
+ *       name="Apache 2.0",
+ *       url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *   )
+ * )
+ * 
+ * @OA\Server(
+ *      url=API_HOST,
+ *      description="JSONFaker Documentation"
+ * )
+ */
 
 class PostController extends Controller
 {
@@ -45,6 +68,32 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Get(
+     *     tags={"Post"},
+     *     path="/posts",
+     *     description="List of post",
+     *     @OA\Response(response="200", description="OK",
+     *     content={
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="data",
+     *                     type="array",
+     *                     description="List of post",
+     *                     @OA\Items(type="string")
+     *                 ),
+     *                 example={
+     *                     "data"={"uid"=1},
+     *                 }
+     *             )
+     *         )
+     *     }
+     *  )
+     * )
+     */
     public function all()
     {
         try {
@@ -60,6 +109,32 @@ class PostController extends Controller
      * Get by id post.
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Get(
+     *     tags={"Post"},
+     *     path="/posts/{id}",
+     *     description="Get by id post",
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="access_token",
+     *                         type="string",
+     *                         description="JWT access token"
+     *                     ),
+     *                     example={
+     *                         "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *  )
+     * )
      */
     public function get_by_id(string $id)
     {
