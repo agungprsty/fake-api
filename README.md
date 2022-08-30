@@ -30,7 +30,7 @@ logging.php.example -> logging.php
 
 ### Running service
 ```bash      
-php -S 0.0.0.0:8000 -t public
+php -S 0.0.0.0:8081 -t public
 ```
 
 ### Generate docs swagger-php

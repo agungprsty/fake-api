@@ -12,20 +12,14 @@
         },
         "version": "1.0.0"
     },
-    "servers": [
-        {
-            "url": "wkwkwkwk",
-            "description": "JSONFaker Documentation"
-        }
-    ],
     "paths": {
-        "/posts": {
+        "/api/posts": {
             "get": {
                 "tags": [
                     "Post"
                 ],
                 "description": "List of post",
-                "operationId": "b87fb62dce5bb371e0b3fe8fd22a2479",
+                "operationId": "f03c57bdee987a19b68f45422f94fd7c",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -54,13 +48,13 @@
                 }
             }
         },
-        "/posts/{id}": {
+        "/api/posts/{id}": {
             "get": {
                 "tags": [
                     "Post"
                 ],
                 "description": "Get by id post",
-                "operationId": "e5b5bcde911c3429146a2d1b202ed50e",
+                "operationId": "3aa8aeb9fe6aafebd9409dd2e819a56a",
                 "responses": {
                     "200": {
                         "description": "OK",

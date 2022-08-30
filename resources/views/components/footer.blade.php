@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#docs-swagger" target="_blank">API Docs</a></li>
+                    <li class="list-inline-item"><a href="{{URL::to("/apidocs")}}" target="_blank">API Docs</a></li>
                     <li class="list-inline-item"><a href="https://github.com/agungprsty/fake-api/" target="_blank">Fork JSONFaker on GitHub</a></li>
                 </ul>
             </div>

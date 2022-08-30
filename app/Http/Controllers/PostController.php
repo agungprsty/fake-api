@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Response;
 use OpenApi\Annotations as OA;
 
-define("API_HOST", "wkwkwkwk");
-
 /**
  * @OA\Info(
  *   title="JSONFaker Documentation",
@@ -23,11 +21,6 @@ define("API_HOST", "wkwkwkwk");
  *       name="Apache 2.0",
  *       url="http://www.apache.org/licenses/LICENSE-2.0.html"
  *   )
- * )
- * 
- * @OA\Server(
- *      url=API_HOST,
- *      description="JSONFaker Documentation"
  * )
  */
 
@@ -72,7 +65,7 @@ class PostController extends Controller
     /**
      * @OA\Get(
      *     tags={"Post"},
-     *     path="/posts",
+     *     path="/api/posts",
      *     description="List of post",
      *     @OA\Response(response="200", description="OK",
      *     content={
@@ -114,7 +107,7 @@ class PostController extends Controller
     /**
      * @OA\Get(
      *     tags={"Post"},
-     *     path="/posts/{id}",
+     *     path="/api/posts/{id}",
      *     description="Get by id post",
      *     @OA\Response(response="200", 
      *      description="OK",
