@@ -36,7 +36,7 @@
     window.onload = function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
-        url: "{{ url("assets/api-docs.json") }}",
+        url: "{{ url("assets/apispec.json") }}",
         dom_id: '#swagger-ui',
         validatorUrl : null,
         deepLinking: true,

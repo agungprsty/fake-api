@@ -76,11 +76,16 @@ class PostController extends Controller
      *                     property="data",
      *                     type="array",
      *                     description="List of post",
-     *                     @OA\Items(type="string")
-     *                 ),
-     *                 example={
-     *                     "data"={"uid"=1},
-     *                 }
+     *                     @OA\Items(type="object"),
+     *                     example={
+     *                      {
+     *                          "uid": 1,
+     *                          "id": 1,
+     *                          "title": "sunt aut facere repellat provident",
+     *                          "body": "quia et suscipit suscipit recusandae consequuntur expedita",
+     *                      }
+     *                    } 
+     *                 )
      *             )
      *         )
      *     }
@@ -109,6 +114,15 @@ class PostController extends Controller
      *     tags={"Post"},
      *     path="/api/posts/{id}",
      *     description="Get by id post",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Post ID",
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
      *     @OA\Response(response="200", 
      *      description="OK",
      *         content={
@@ -116,18 +130,21 @@ class PostController extends Controller
      *                 mediaType="application/json",
      *                 @OA\Schema(
      *                     @OA\Property(
-     *                         property="access_token",
-     *                         type="string",
-     *                         description="JWT access token"
+     *                         property="data",
+     *                         type="object",
+     *                         description="Find post by id"
      *                     ),
      *                     example={
-     *                         "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+     *                          "uid": 1,
+     *                          "id": 1,
+     *                          "title": "sunt aut facere repellat provident",
+     *                          "body": "quia et suscipit suscipit recusandae consequuntur expedita",
      *                     }
      *                 )
      *             )
      *         }
+     *      ),
      *  )
-     * )
      */
     public function get_by_id(string $id)
     {

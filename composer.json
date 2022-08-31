@@ -6,8 +6,7 @@
     "type": "project",
     "require": {
         "php": "^8.0",
-        "doctrine/annotations": "^1.13",
-        "laravel/lumen-framework": "^9.0",
+        "laravel/lumen-framework": "^8.0",
         "zircote/swagger-php": "^4.4"
     },
     "require-dev": {

@@ -35,5 +35,5 @@ php -S 0.0.0.0:8081 -t public
 
 ### Generate docs swagger-php
 ```bash
-./vendor/bin/openapi app -o public/assets/api-docs.json
+./vendor/bin/openapi app -o public/assets/apispec.json
 ```

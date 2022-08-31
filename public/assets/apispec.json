@@ -31,16 +31,19 @@
                                             "description": "List of post",
                                             "type": "array",
                                             "items": {
-                                                "type": "string"
-                                            }
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "uid": 1,
+                                                    "id": 1,
+                                                    "title": "sunt aut facere repellat provident",
+                                                    "body": "quia et suscipit suscipit recusandae consequuntur expedita"
+                                                }
+                                            ]
                                         }
                                     },
-                                    "type": "object",
-                                    "example": {
-                                        "data": {
-                                            "uid": 1
-                                        }
-                                    }
+                                    "type": "object"
                                 }
                             }
                         }
@@ -55,6 +58,17 @@
                 ],
                 "description": "Get by id post",
                 "operationId": "3aa8aeb9fe6aafebd9409dd2e819a56a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -62,14 +76,17 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "access_token": {
-                                            "description": "JWT access token",
-                                            "type": "string"
+                                        "data": {
+                                            "description": "Find post by id",
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object",
                                     "example": {
-                                        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc..."
+                                        "uid": 1,
+                                        "id": 1,
+                                        "title": "sunt aut facere repellat provident",
+                                        "body": "quia et suscipit suscipit recusandae consequuntur expedita"
                                     }
                                 }
                             }
