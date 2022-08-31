@@ -117,6 +117,7 @@ class PostController extends Controller
      *     @OA\Parameter(
      *         name="id",
      *         description="Post ID",
+     *         example = 1,
      *          in = "path",
      *         required=true,
      *         @OA\Schema(
@@ -167,6 +168,51 @@ class PostController extends Controller
      * @param  PostRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Post(
+     *     tags={"Post"},
+     *     path="/api/posts",
+     *     description="Create new post",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="title",
+     *                     type="string",
+     *                     example="Title hello world!"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="body",
+     *                     type="string",
+     *                     example="Body Hello world!"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Create new post"
+     *                     ),
+     *                     example={
+     *                          "id": 101,
+     *                          "title": "Title hello world!",
+     *                          "body": "Body hello world!",
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
+     */
     public function store(PostRequest $request)
     {
         try {
@@ -183,6 +229,62 @@ class PostController extends Controller
      *
      * @param  PostRequest  $request
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Put(
+     *     tags={"Post"},
+     *     path="/api/posts/{id}",
+     *     description="Update a post",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Post ID",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="title",
+     *                     type="string",
+     *                     example="Update itle hello world!"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="body",
+     *                     type="string",
+     *                     example="Update Body Hello world!"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Create new post"
+     *                     ),
+     *                     example={
+     *                          "uid": 1,
+     *                          "id": 1,
+     *                          "title": "Update Title hello world!",
+     *                          "body": "Update Body hello world!",
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
      */
     public function update(string $id, PostRequest $request)
     {
@@ -204,6 +306,26 @@ class PostController extends Controller
      * Delete post
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Delete(
+     *     tags={"Post"},
+     *     path="/api/posts/{id}",
+     *     description="Delete a post",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Post ID",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK"),
+     *  )
      */
     public function delete(string $id)
     {

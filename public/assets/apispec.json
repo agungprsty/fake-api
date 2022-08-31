@@ -49,6 +49,55 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Create new post",
+                "operationId": "4a657e51a0066c64781851f2fd2651e2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Title hello world!"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Body Hello world!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new post",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 101,
+                                        "title": "Title hello world!",
+                                        "body": "Body hello world!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/api/posts/{id}": {
@@ -66,7 +115,8 @@
                         "required": true,
                         "schema": {
                             "type": "integer"
-                        }
+                        },
+                        "example": 1
                     }
                 ],
                 "responses": {
@@ -91,6 +141,92 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Update a post",
+                "operationId": "929614537d76a081a92170a41ed3bdb3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Update itle hello world!"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Update Body Hello world!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new post",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "uid": 1,
+                                        "id": 1,
+                                        "title": "Update Title hello world!",
+                                        "body": "Update Body hello world!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Delete a post",
+                "operationId": "976001c8b1bbc00a6c0c6244820dd677",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
                     }
                 }
             }
