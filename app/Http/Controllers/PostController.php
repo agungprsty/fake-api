@@ -238,7 +238,7 @@ class PostController extends Controller
      *                 @OA\Property(
      *                     property="title",
      *                     type="string",
-     *                     example="Update itle hello world!"
+     *                     example="Update title hello world!"
      *                 ),
      *                 @OA\Property(
      *                     property="body",

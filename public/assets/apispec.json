@@ -13,6 +13,240 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/comments": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "List of Comment",
+                "operationId": "d1ea15c54f3c3ffbb759e31234d98807",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List of comment",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "post_id": 1,
+                                                    "id": 1,
+                                                    "name": "sunt aut facere repellat provident",
+                                                    "email": "Eliseo@gardner.biz",
+                                                    "body": "quia et suscipit suscipit recusandae consequuntur expedita"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Create new comment",
+                "operationId": "300619a0a4003920aafe960e45688102",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Hello world!"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "hello@gmail.com"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Body Hello world!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new comment",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 501,
+                                        "name": "Hello world!",
+                                        "email": "hello@gmail.com",
+                                        "body": "Body Hello world!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/comments/{id}": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Get by id comment",
+                "operationId": "c5de3fc7f7fe2109cf04544a2b1f5bc6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Find comment by id",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "post_id": 1,
+                                        "id": 1,
+                                        "name": "sunt aut facere repellat provident",
+                                        "email": "Eliseo@gardner.biz",
+                                        "body": "quia et suscipit suscipit recusandae consequuntur expedita"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/comment/{id}": {
+            "put": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Update a comment",
+                "operationId": "58d5268605f3286ab81e3cf9f422a833",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Update hello world!"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "helloupdate@gmail.com"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Update body Hello world!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Update a comment",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "post_id": 1,
+                                        "id": 1,
+                                        "name": "Update hello world!",
+                                        "email": "helloupdate@gmail.com",
+                                        "body": "Update body hello world!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/commets/{id}": {
+            "delete": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Delete a comment",
+                "operationId": "fb21bc7bde195ad9736d1cea564e7f95",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/api/posts": {
             "get": {
                 "tags": [
@@ -169,7 +403,7 @@
                                 "properties": {
                                     "title": {
                                         "type": "string",
-                                        "example": "Update itle hello world!"
+                                        "example": "Update title hello world!"
                                     },
                                     "body": {
                                         "type": "string",

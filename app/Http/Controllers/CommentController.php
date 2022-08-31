@@ -45,6 +45,38 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Get(
+     *     tags={"Comment"},
+     *     path="/api/comments",
+     *     description="List of Comment",
+     *     @OA\Response(response="200", description="OK",
+     *     content={
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="data",
+     *                     type="array",
+     *                     description="List of comment",
+     *                     @OA\Items(type="object"),
+     *                     example={
+     *                      {
+     *                          "post_id": 1,
+     *                          "id": 1,
+     *                          "name": "sunt aut facere repellat provident",
+     *                          "email": "Eliseo@gardner.biz",
+     *                          "body": "quia et suscipit suscipit recusandae consequuntur expedita",
+     *                      }
+     *                    } 
+     *                 )
+     *             )
+     *         )
+     *     }
+     *  )
+     * )
+     */
     public function all()
     {
         try {
@@ -60,6 +92,46 @@ class CommentController extends Controller
      * Get by id comment.
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Get(
+     *     tags={"Comment"},
+     *     path="/api/comments/{id}",
+     *     description="Get by id comment",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Comment ID",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Find comment by id"
+     *                     ),
+     *                     example={
+     *                          "post_id": 1,
+     *                          "id": 1,
+     *                          "name": "sunt aut facere repellat provident",
+     *                          "email": "Eliseo@gardner.biz",
+     *                          "body": "quia et suscipit suscipit recusandae consequuntur expedita",
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
      */
     public function get_by_id(string $id)
     {
@@ -82,6 +154,57 @@ class CommentController extends Controller
      * @param  CommentRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Post(
+     *     tags={"Comment"},
+     *     path="/api/comments",
+     *     description="Create new comment",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string",
+     *                     example="Hello world!"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string",
+     *                     example="hello@gmail.com"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="body",
+     *                     type="string",
+     *                     example="Body Hello world!"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Create new comment"
+     *                     ),
+     *                     example={
+     *                          "id": 501,
+     *                          "name": "Hello world!",
+     *                          "email": "hello@gmail.com",
+     *                          "body": "Body Hello world!",
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
+     */
     public function store(CommentRequest $request)
     {
         try {
@@ -98,6 +221,68 @@ class CommentController extends Controller
      *
      * @param  CommentRequest  $request
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Put(
+     *     tags={"Comment"},
+     *     path="/api/comment/{id}",
+     *     description="Update a comment",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Comment ID",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string",
+     *                     example="Update hello world!"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string",
+     *                     example="helloupdate@gmail.com"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="body",
+     *                     type="string",
+     *                     example="Update body Hello world!"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Update a comment"
+     *                     ),
+     *                     example={
+     *                          "post_id": 1,
+     *                          "id": 1,
+     *                          "name": "Update hello world!",
+     *                          "email": "helloupdate@gmail.com",
+     *                          "body": "Update body hello world!",
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
      */
     public function update(string $id, CommentRequest $request)
     {
@@ -119,6 +304,26 @@ class CommentController extends Controller
      * Delete comment
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Delete(
+     *     tags={"Comment"},
+     *     path="/api/commets/{id}",
+     *     description="Delete a comment",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Comment ID",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK"),
+     *  )
      */
     public function delete(string $id)
     {
