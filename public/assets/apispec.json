@@ -230,6 +230,365 @@
                     }
                 }
             }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "List of user",
+                "operationId": "73e4177671849bfddfd61a56eafa2aff",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List of user",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "id": 1,
+                                                    "name": "Ujang Raharja",
+                                                    "username": "Pehhh",
+                                                    "email": "Ujanguyee@gmail.com",
+                                                    "address": {
+                                                        "street": "Kulas Light",
+                                                        "suite": "Apt. 556",
+                                                        "city": "Bandung",
+                                                        "zipcode": "92998",
+                                                        "geo": {
+                                                            "lat": "-37.3159",
+                                                            "lng": "81.1496"
+                                                        }
+                                                    },
+                                                    "phone": "0897678542543",
+                                                    "website": "aselole.com",
+                                                    "company": {
+                                                        "name": "PT Aselole Ceria",
+                                                        "catchPhrase": "Multi-layered client-server neural-net",
+                                                        "bs": "harness real-time e-markets"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Create new user",
+                "operationId": "592819a0265360b2014512d6dbfaf0e7",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Ujang Pramana"
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "example": "UjangUyee"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "ujanguyee@gmail.com"
+                                    },
+                                    "address": {
+                                        "properties": {
+                                            "street": {
+                                                "type": "string",
+                                                "example": "Jl. Sudirman No. 56"
+                                            },
+                                            "suite": {
+                                                "type": "string",
+                                                "example": "Apt. Kembang Jaya"
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "example": "Bandung"
+                                            },
+                                            "zipcode": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "0897567532456"
+                                    },
+                                    "website": {
+                                        "type": "string",
+                                        "example": "aselole.com"
+                                    },
+                                    "company": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "PT Aselole Jaya"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new users",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 11,
+                                        "name": "Ujang Pramana",
+                                        "username": "UjangUyee",
+                                        "email": "ujanguyee@gmail.com",
+                                        "address": {
+                                            "street": "Jl.Sudirman No. 56",
+                                            "suite": "Apt. Kembang Jaya",
+                                            "city": "Bandung",
+                                            "zipcode": "12345"
+                                        },
+                                        "phone": "0897567532456",
+                                        "website": "aselole.com",
+                                        "company": {
+                                            "name": "PT Aselole Jaya"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get by id user",
+                "operationId": "46ec449d2a12f2c5b43888e99aad8490",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Find user by id",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "name": "Leanne Graham",
+                                        "username": "Bret",
+                                        "email": "Sincere@gmail.com",
+                                        "address": {
+                                            "street": "Kulas Light",
+                                            "suite": "Apt. 556",
+                                            "city": "Gwenborough",
+                                            "zipcode": "92998",
+                                            "geo": {
+                                                "lat": "-37.3159",
+                                                "lng": "81.1496"
+                                            }
+                                        },
+                                        "phone": "1-770-736-8031 x56442",
+                                        "website": "hildegard.org",
+                                        "company": {
+                                            "name": "Romaguera-Crona",
+                                            "catchPhrase": "Multi-layered client-server neural-net",
+                                            "bs": "harness real-time e-markets"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Update a user",
+                "operationId": "b9091397c8b25f12c6adb74be6ce3a5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Budi Pramana"
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "example": "BudiUyee"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "budiuyee@gmail.com"
+                                    },
+                                    "address": {
+                                        "properties": {
+                                            "street": {
+                                                "type": "string",
+                                                "example": "Jl. Budi No. 06"
+                                            },
+                                            "suite": {
+                                                "type": "string",
+                                                "example": "Apt. Kembang Jaya"
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "example": "Bandung"
+                                            },
+                                            "zipcode": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "0897567532456"
+                                    },
+                                    "website": {
+                                        "type": "string",
+                                        "example": "aselole.com"
+                                    },
+                                    "company": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "PT Aselole Jaya"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Update a users",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "name": "Budi Pramana",
+                                        "username": "BudiUyee",
+                                        "email": "budiuyee@gmail.com",
+                                        "address": {
+                                            "street": "Jl. Budi No. 06",
+                                            "suite": "Apt. Kembang Jaya",
+                                            "city": "Bandung",
+                                            "zipcode": "12345"
+                                        },
+                                        "phone": "0897567532456",
+                                        "website": "aselole.com",
+                                        "company": {
+                                            "name": "PT Aselole Jaya"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Delete a user",
+                "operationId": "e169ebcc01eeee2f5e57e5bfc064bc7f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
         }
     }
 }

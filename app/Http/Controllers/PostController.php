@@ -9,21 +9,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Response;
 use OpenApi\Annotations as OA;
 
-/**
- * @OA\Info(
- *   title="JSONFaker Documentation",
- *   description="JSONFaker Free Fake REST API",
- *   version="1.0.0",
- *   @OA\Contact(
- *     email="agungprsty423@gmail.com"
- *   ),
- *   @OA\License(
- *       name="Apache 2.0",
- *       url="http://www.apache.org/licenses/LICENSE-2.0.html"
- *   )
- * )
- */
-
 class PostController extends Controller
 {
     protected $repo;
