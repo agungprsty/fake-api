@@ -25,6 +25,7 @@ class PostController extends Controller
     */
     protected function responses(
         mixed $data = null,
+        mixed $pagination = null,
         int $status = 200,
     ){
         $content = [
@@ -36,6 +37,9 @@ class PostController extends Controller
 
         if ($data){
             $content['data'] = $data;
+        }
+        if ($pagination){
+            $content['pagination'] = $pagination;
         }
 
         return response()->json($content, $status);
@@ -80,7 +84,8 @@ class PostController extends Controller
     public function all()
     {
         try {
-            $post = $this->repo->all();
+            $qs = request()->getQueryString();
+            $post = $this->repo->all($qs);
             return $this->responses($post);
         } catch (Throwable $e) {
             Log::error($e->getMessage());

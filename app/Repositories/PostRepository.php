@@ -19,9 +19,17 @@ class PostRepository extends BaseRepository
      *
      * @return Post
      */
-    public function all()
+    public function all(string $query_string = null)
     {
-        return $this->posts();
+        $result = $this->posts();
+
+        if ($query_string)
+        {
+            $qs = $this->getQueryParams($query_string);
+            dd($qs['page']);
+        }
+
+        return $result;
     }
 
      /**
@@ -77,5 +85,18 @@ class PostRepository extends BaseRepository
             "title" => $input['title'],
             "body" => $input['body'],
         ];
+    }
+
+    private function getQueryParams($qs)
+    {
+        $parameters = [];
+        $explodedQueryString = explode('&', $qs);
+        foreach ($explodedQueryString as $string) {
+            $values = explode('=', $string);
+            $key = $values[0];
+            $val = $values[1];
+            $parameters[$key] = $val;
+        }
+        return $parameters;
     }
 }
