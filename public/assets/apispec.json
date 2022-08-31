@@ -1,0 +1,1046 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "JSONFaker Documentation",
+        "description": "JSONFaker Free Fake REST API",
+        "contact": {
+            "email": "agungprsty423@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/comments": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "List of Comment",
+                "operationId": "d1ea15c54f3c3ffbb759e31234d98807",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List of comment",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "post_id": 1,
+                                                    "id": 1,
+                                                    "name": "sunt aut facere repellat provident",
+                                                    "email": "Eliseo@gardner.biz",
+                                                    "body": "quia et suscipit suscipit recusandae consequuntur expedita"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Create new comment",
+                "operationId": "300619a0a4003920aafe960e45688102",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Hello world!"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "hello@gmail.com"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Body Hello world!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new comment",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 501,
+                                        "name": "Hello world!",
+                                        "email": "hello@gmail.com",
+                                        "body": "Body Hello world!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/comments/{id}": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Get by id comment",
+                "operationId": "c5de3fc7f7fe2109cf04544a2b1f5bc6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Find comment by id",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "post_id": 1,
+                                        "id": 1,
+                                        "name": "sunt aut facere repellat provident",
+                                        "email": "Eliseo@gardner.biz",
+                                        "body": "quia et suscipit suscipit recusandae consequuntur expedita"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/comment/{id}": {
+            "put": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Update a comment",
+                "operationId": "58d5268605f3286ab81e3cf9f422a833",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Update hello world!"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "helloupdate@gmail.com"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Update body Hello world!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Update a comment",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "post_id": 1,
+                                        "id": 1,
+                                        "name": "Update hello world!",
+                                        "email": "helloupdate@gmail.com",
+                                        "body": "Update body hello world!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/commets/{id}": {
+            "delete": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Delete a comment",
+                "operationId": "fb21bc7bde195ad9736d1cea564e7f95",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/posts": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "List of post",
+                "operationId": "f03c57bdee987a19b68f45422f94fd7c",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List of post",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "uid": 1,
+                                                    "id": 1,
+                                                    "title": "sunt aut facere repellat provident",
+                                                    "body": "quia et suscipit suscipit recusandae consequuntur expedita"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Create new post",
+                "operationId": "4a657e51a0066c64781851f2fd2651e2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Title hello world!"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Body Hello world!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new post",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 101,
+                                        "title": "Title hello world!",
+                                        "body": "Body hello world!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Get by id post",
+                "operationId": "3aa8aeb9fe6aafebd9409dd2e819a56a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Find post by id",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "uid": 1,
+                                        "id": 1,
+                                        "title": "sunt aut facere repellat provident",
+                                        "body": "quia et suscipit suscipit recusandae consequuntur expedita"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Update a post",
+                "operationId": "929614537d76a081a92170a41ed3bdb3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Update title hello world!"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Update Body Hello world!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new post",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "uid": 1,
+                                        "id": 1,
+                                        "title": "Update Title hello world!",
+                                        "body": "Update Body hello world!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Delete a post",
+                "operationId": "976001c8b1bbc00a6c0c6244820dd677",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/todos": {
+            "get": {
+                "tags": [
+                    "Todo"
+                ],
+                "description": "List of todo",
+                "operationId": "9e1a56af805466602545efcf817e9024",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List of todo",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "uid": 1,
+                                                    "id": 1,
+                                                    "title": "delectus aut autem",
+                                                    "completed": false
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Todo"
+                ],
+                "description": "Create new todo",
+                "operationId": "6f5da079c2dace66df52625276205a32",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Title hello world!"
+                                    },
+                                    "completed": {
+                                        "type": "boolean",
+                                        "example": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new user",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 201,
+                                        "title": "Title hello world!",
+                                        "completed": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/todos/{id}": {
+            "get": {
+                "tags": [
+                    "Todo"
+                ],
+                "description": "Get by id todo",
+                "operationId": "4da3464ac932f060bd2a7281223073a9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Todo ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Find todo by id",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "uid": 1,
+                                        "id": 1,
+                                        "title": "quis ut nam facilis et officia qui",
+                                        "completed": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Todo"
+                ],
+                "description": "Update a todo",
+                "operationId": "0e5cec090fe772f5dcb769dd9e38717c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Todo ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Update title hello world!"
+                                    },
+                                    "completed": {
+                                        "type": "boolean",
+                                        "example": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Update a todo",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "uid": 1,
+                                        "id": 1,
+                                        "title": "Update Title hello world!",
+                                        "completed": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Todo"
+                ],
+                "description": "Delete a todo",
+                "operationId": "a937d553ead1ea70ee5793aed5674790",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Todo ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "List of user",
+                "operationId": "73e4177671849bfddfd61a56eafa2aff",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List of user",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "id": 1,
+                                                    "name": "Ujang Raharja",
+                                                    "username": "Pehhh",
+                                                    "email": "Ujanguyee@gmail.com",
+                                                    "address": {
+                                                        "street": "Kulas Light",
+                                                        "suite": "Apt. 556",
+                                                        "city": "Bandung",
+                                                        "zipcode": "92998",
+                                                        "geo": {
+                                                            "lat": "-37.3159",
+                                                            "lng": "81.1496"
+                                                        }
+                                                    },
+                                                    "phone": "0897678542543",
+                                                    "website": "aselole.com",
+                                                    "company": {
+                                                        "name": "PT Aselole Ceria",
+                                                        "catchPhrase": "Multi-layered client-server neural-net",
+                                                        "bs": "harness real-time e-markets"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Create new user",
+                "operationId": "592819a0265360b2014512d6dbfaf0e7",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Ujang Pramana"
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "example": "UjangUyee"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "ujanguyee@gmail.com"
+                                    },
+                                    "address": {
+                                        "properties": {
+                                            "street": {
+                                                "type": "string",
+                                                "example": "Jl. Sudirman No. 56"
+                                            },
+                                            "suite": {
+                                                "type": "string",
+                                                "example": "Apt. Kembang Jaya"
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "example": "Bandung"
+                                            },
+                                            "zipcode": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "0897567532456"
+                                    },
+                                    "website": {
+                                        "type": "string",
+                                        "example": "aselole.com"
+                                    },
+                                    "company": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "PT Aselole Jaya"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Create new users",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 11,
+                                        "name": "Ujang Pramana",
+                                        "username": "UjangUyee",
+                                        "email": "ujanguyee@gmail.com",
+                                        "address": {
+                                            "street": "Jl.Sudirman No. 56",
+                                            "suite": "Apt. Kembang Jaya",
+                                            "city": "Bandung",
+                                            "zipcode": "12345"
+                                        },
+                                        "phone": "0897567532456",
+                                        "website": "aselole.com",
+                                        "company": {
+                                            "name": "PT Aselole Jaya"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get by id user",
+                "operationId": "46ec449d2a12f2c5b43888e99aad8490",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Find user by id",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "name": "Leanne Graham",
+                                        "username": "Bret",
+                                        "email": "Sincere@gmail.com",
+                                        "address": {
+                                            "street": "Kulas Light",
+                                            "suite": "Apt. 556",
+                                            "city": "Gwenborough",
+                                            "zipcode": "92998",
+                                            "geo": {
+                                                "lat": "-37.3159",
+                                                "lng": "81.1496"
+                                            }
+                                        },
+                                        "phone": "1-770-736-8031 x56442",
+                                        "website": "hildegard.org",
+                                        "company": {
+                                            "name": "Romaguera-Crona",
+                                            "catchPhrase": "Multi-layered client-server neural-net",
+                                            "bs": "harness real-time e-markets"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Update a user",
+                "operationId": "b9091397c8b25f12c6adb74be6ce3a5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Budi Pramana"
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "example": "BudiUyee"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "budiuyee@gmail.com"
+                                    },
+                                    "address": {
+                                        "properties": {
+                                            "street": {
+                                                "type": "string",
+                                                "example": "Jl. Budi No. 06"
+                                            },
+                                            "suite": {
+                                                "type": "string",
+                                                "example": "Apt. Kembang Jaya"
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "example": "Bandung"
+                                            },
+                                            "zipcode": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "0897567532456"
+                                    },
+                                    "website": {
+                                        "type": "string",
+                                        "example": "aselole.com"
+                                    },
+                                    "company": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "PT Aselole Jaya"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Update a users",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "name": "Budi Pramana",
+                                        "username": "BudiUyee",
+                                        "email": "budiuyee@gmail.com",
+                                        "address": {
+                                            "street": "Jl. Budi No. 06",
+                                            "suite": "Apt. Kembang Jaya",
+                                            "city": "Bandung",
+                                            "zipcode": "12345"
+                                        },
+                                        "phone": "0897567532456",
+                                        "website": "aselole.com",
+                                        "company": {
+                                            "name": "PT Aselole Jaya"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Delete a user",
+                "operationId": "e169ebcc01eeee2f5e57e5bfc064bc7f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}

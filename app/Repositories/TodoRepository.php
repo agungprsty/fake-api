@@ -72,7 +72,6 @@ class TodoRepository extends BaseRepository
     public function update(object $data): object
     {
         $input = request()->all();
-        dd($data);
         return (object) [
             "uid" => $data->uid,
             "id" => $data->id,

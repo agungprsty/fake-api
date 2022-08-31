@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <p class="lead text-center"><strong>Note:</strong> resources have relations. For example: posts have many comments, ... see <a href="#docs-swagger" class="text-secondary">guide</a> for the full list.</p>
+        <p class="lead text-center"><strong>Note:</strong> resources have relations. For example: posts have many comments, ... see <a href="{{URL::to("/apidocs")}}" class="text-secondary">guide</a> for the full list.</p>
     </div>
 </section>
 

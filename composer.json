@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": "^8.0",
-        "laravel/lumen-framework": "^9.0"
+        "laravel/lumen-framework": "^8.0",
+        "zircote/swagger-php": "^4.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

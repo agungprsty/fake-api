@@ -2,7 +2,6 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,4 +15,8 @@
 
 $router->get('/', function () {
     return view('home');
+});
+
+$router->get('/apidocs', function () {
+    return view('docs');
 });

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12 d-flex flex-row align-items-center justify-content-between">
                 <div class="heading-brand">JSONFaker</div>
-                <a href="#docs-swagger" class="btn btn-outline-dark" target="_blank">DOCUMENTATION</a>
+                <a href="{{URL::to("/apidocs")}}" class="btn btn-outline-dark" target="_blank">DOCUMENTATION</a>
             </div>
         </div>
         <div class="row mt-6">

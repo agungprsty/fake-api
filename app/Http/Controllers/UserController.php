@@ -45,6 +45,54 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Get(
+     *     tags={"User"},
+     *     path="/api/users",
+     *     description="List of user",
+     *     @OA\Response(response="200", description="OK",
+     *     content={
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="data",
+     *                     type="array",
+     *                     description="List of user",
+     *                     @OA\Items(type="object"),
+     *                     example={
+     *                      {
+     *                          "id": 1,
+     *                          "name": "Ujang Raharja",
+     *                          "username": "Pehhh",
+     *                          "email": "Ujanguyee@gmail.com",
+     *                          "address": {
+     *                               "street": "Kulas Light",
+     *                               "suite": "Apt. 556",
+     *                               "city": "Bandung",
+     *                               "zipcode": "92998",
+     *                               "geo": {
+     *                                   "lat": "-37.3159",
+     *                                   "lng": "81.1496"
+     *                               },
+     *                          },
+     *                          "phone": "0897678542543",
+     *                          "website": "aselole.com",
+     *                          "company": {
+     *                              "name": "PT Aselole Ceria",
+     *                              "catchPhrase": "Multi-layered client-server neural-net",
+     *                              "bs": "harness real-time e-markets"
+     *                          }
+     *                      }
+     *                    } 
+     *                 )
+     *             )
+     *         )
+     *     }
+     *  )
+     * )
+     */
     public function all()
     {
         try {
@@ -60,6 +108,62 @@ class UserController extends Controller
      * Get by id user.
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Get(
+     *     tags={"User"},
+     *     path="/api/users/{id}",
+     *     description="Get by id user",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="User ID",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Find user by id"
+     *                     ),
+     *                     example={
+     *                          "id": 1,
+     *                          "name": "Leanne Graham",
+     *                          "username": "Bret",
+     *                          "email": "Sincere@gmail.com",
+     *                          "address": {
+     *                               "street": "Kulas Light",
+     *                               "suite": "Apt. 556",
+     *                               "city": "Gwenborough",
+     *                               "zipcode": "92998",
+     *                               "geo": {
+     *                                   "lat": "-37.3159",
+     *                                   "lng": "81.1496"
+     *                               },
+     *                          },
+     *                          "phone": "1-770-736-8031 x56442",
+     *                          "website": "hildegard.org",
+     *                          "company": {
+     *                              "name": "Romaguera-Crona",
+     *                              "catchPhrase": "Multi-layered client-server neural-net",
+     *                              "bs": "harness real-time e-markets"
+     *                          }
+     *                      }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
      */
     public function get_by_id(string $id)
     {
@@ -82,6 +186,111 @@ class UserController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Post(
+     *     tags={"User"},
+     *     path="/api/users",
+     *     description="Create new user",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string",
+     *                     example="Ujang Pramana"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="username",
+     *                     type="string",
+     *                     example="UjangUyee"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string",
+     *                     example="ujanguyee@gmail.com"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="address",
+     *                     type="object",
+     *                     @OA\Property(
+     *                          property="street",
+     *                          type="string",
+     *                          example="Jl. Sudirman No. 56"
+     *                     ),
+     *                     @OA\Property(
+     *                          property="suite",
+     *                          type="string",
+     *                          example="Apt. Kembang Jaya"
+     *                     ),
+     *                     @OA\Property(
+     *                          property="city",
+     *                          type="string",
+     *                          example="Bandung"
+     *                     ),
+     *                     @OA\Property(
+     *                          property="zipcode",
+     *                          type="string",
+     *                          example="12345"
+     *                     ),
+     *                 ),
+     *                 @OA\Property(
+     *                     property="phone",
+     *                     type="string",
+     *                     example="0897567532456"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="website",
+     *                     type="string",
+     *                     example="aselole.com"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="company",
+     *                     type="object",
+     *                     @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          example="PT Aselole Jaya"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Create new users"
+     *                     ),
+     *                     example={
+     *                          "id": 11,
+     *                          "name": "Ujang Pramana",
+     *                          "username": "UjangUyee",
+     *                          "email": "ujanguyee@gmail.com",
+     *                          "address": {
+     *                               "street": "Jl.Sudirman No. 56",
+     *                               "suite": "Apt. Kembang Jaya",
+     *                               "city": "Bandung",
+     *                               "zipcode": "12345"
+     *                          },
+     *                          "phone": "0897567532456",
+     *                          "website": "aselole.com",
+     *                          "company": {
+     *                              "name": "PT Aselole Jaya"
+     *                          }
+     *                      }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
+     */
     public function store(Request $request)
     {
         try {
@@ -98,6 +307,121 @@ class UserController extends Controller
      *
      * @param  Request  $request
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Put(
+     *     tags={"User"},
+     *     path="/api/users/{id}",
+     *     description="Update a user",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="User ID",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string",
+     *                     example="Budi Pramana"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="username",
+     *                     type="string",
+     *                     example="BudiUyee"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string",
+     *                     example="budiuyee@gmail.com"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="address",
+     *                     type="object",
+     *                     @OA\Property(
+     *                          property="street",
+     *                          type="string",
+     *                          example="Jl. Budi No. 06"
+     *                     ),
+     *                     @OA\Property(
+     *                          property="suite",
+     *                          type="string",
+     *                          example="Apt. Kembang Jaya"
+     *                     ),
+     *                     @OA\Property(
+     *                          property="city",
+     *                          type="string",
+     *                          example="Bandung"
+     *                     ),
+     *                     @OA\Property(
+     *                          property="zipcode",
+     *                          type="string",
+     *                          example="12345"
+     *                     ),
+     *                 ),
+     *                 @OA\Property(
+     *                     property="phone",
+     *                     type="string",
+     *                     example="0897567532456"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="website",
+     *                     type="string",
+     *                     example="aselole.com"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="company",
+     *                     type="object",
+     *                     @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          example="PT Aselole Jaya"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Update a users"
+     *                     ),
+     *                     example={
+     *                          "id": 1,
+     *                          "name": "Budi Pramana",
+     *                          "username": "BudiUyee",
+     *                          "email": "budiuyee@gmail.com",
+     *                          "address": {
+     *                               "street": "Jl. Budi No. 06",
+     *                               "suite": "Apt. Kembang Jaya",
+     *                               "city": "Bandung",
+     *                               "zipcode": "12345"
+     *                          },
+     *                          "phone": "0897567532456",
+     *                          "website": "aselole.com",
+     *                          "company": {
+     *                              "name": "PT Aselole Jaya"
+     *                          }
+     *                      }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
      */
     public function update(string $id, Request $request)
     {
@@ -119,6 +443,26 @@ class UserController extends Controller
      * Delete user
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Delete(
+     *     tags={"User"},
+     *     path="/api/users/{id}",
+     *     description="Delete a user",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="User ID",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK"),
+     *  )
      */
     public function delete(string $id)
     {
