@@ -58,6 +58,24 @@ class PostController extends Controller
      *     tags={"Post"},
      *     path="/api/posts",
      *     description="List of post",
+     *     @OA\Parameter(
+     *         name="page",
+     *         description="Params page",
+     *         example = 1,
+     *          in = "query",
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Parameter(
+     *         name="per_page",
+     *         description="Params per page",
+     *         example = 10,
+     *          in = "query",
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
      *     @OA\Response(response="200", description="OK",
      *     content={
      *         @OA\MediaType(
@@ -335,9 +353,15 @@ class PostController extends Controller
         $result['page'] = isset($_GET['page']) ? intval($_GET['page']) : 1;
         $result['per_page'] = isset($_GET['per_page']) ? intval($_GET['per_page']) : 10;
 
-        // Validation: Page to display can not be less than 1
-        if ($result['page'] < 1) {
+        // Validation: Page to display can not be less than 1 or 
+        // Request page greater than 100
+        if ($result['page'] < 1 || $result['page'] > 100) {
             $result['page'] = 1;
+        }
+
+        // Validation: Request per page greater than 100
+        if ($result['per_page'] > 100) {
+            $result['per_page'] = 10;
         }
 
         return $result;

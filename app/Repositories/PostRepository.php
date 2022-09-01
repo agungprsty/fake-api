@@ -95,17 +95,4 @@ class PostRepository extends BaseRepository
             "body" => $input['body'],
         ];
     }
-
-    private function getQueryParams($qs)
-    {
-        $parameters = [];
-        $explodedQueryString = explode('&', $qs);
-        foreach ($explodedQueryString as $string) {
-            $values = explode('=', $string);
-            $key = $values[0];
-            $val = $values[1];
-            $parameters[$key] = $val;
-        }
-        return $parameters;
-    }
 }

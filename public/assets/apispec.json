@@ -20,6 +20,26 @@
                 ],
                 "description": "List of Comment",
                 "operationId": "d1ea15c54f3c3ffbb759e31234d98807",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Params page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Params per page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -254,6 +274,26 @@
                 ],
                 "description": "List of post",
                 "operationId": "f03c57bdee987a19b68f45422f94fd7c",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Params page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Params per page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -472,6 +512,26 @@
                 ],
                 "description": "List of todo",
                 "operationId": "9e1a56af805466602545efcf817e9024",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Params page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Params per page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -690,6 +750,26 @@
                 ],
                 "description": "List of user",
                 "operationId": "73e4177671849bfddfd61a56eafa2aff",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Params page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Params per page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
