@@ -19,9 +19,26 @@ class PostRepository extends BaseRepository
      *
      * @return Post
      */
-    public function all()
+    public function all(array $qs)
     {
-        return $this->posts();
+        $posts = $this->posts();
+
+        $page = $qs['page'];
+        $per_page = $qs['per_page'];
+
+        // Calculate total number of records, and total number of pages
+        $total_records = count($posts);
+        $total_pages   = ceil($total_records / $per_page);
+
+        // Validation: Page to display can not be greater than the total number of pages
+        if ($page > $total_pages) {
+            $page = $total_pages;
+        }
+
+        // Calculate the position of the first record of the page to display
+        $offset = ($page - 1) * $per_page;
+
+        return array_slice($posts, $offset, $per_page);
     }
 
      /**
