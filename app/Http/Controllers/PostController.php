@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Throwable;
 use App\Http\Requests\PostRequest;
 use App\Repositories\PostRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Response;
 use OpenApi\Annotations as OA;
@@ -27,7 +28,8 @@ class PostController extends Controller
         mixed $data = null,
         mixed $pagination = null,
         int $status = 200,
-    ){
+    ): JsonResponse
+    {
         $content = [
             'meta' => [
                 'status' => $status,
@@ -39,7 +41,7 @@ class PostController extends Controller
             $content['data'] = $data;
         }
         if ($pagination){
-            $content['pagination'] = $pagination;
+            $content['meta']['pagination'] = $pagination;
         }
 
         return response()->json($content, $status);
@@ -81,12 +83,12 @@ class PostController extends Controller
      *  )
      * )
      */
-    public function all()
+    public function all(): JsonResponse
     {
         try {
-            $qs = request()->getQueryString();
+            $qs = $this->check_query_string();
             $post = $this->repo->all($qs);
-            return $this->responses($post);
+            return $this->responses($post, $qs);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -137,7 +139,7 @@ class PostController extends Controller
      *      ),
      *  )
      */
-    public function get_by_id(string $id)
+    public function get_by_id(string $id): JsonResponse
     {
         try {
             $post = $this->repo->get_by_id($id);
@@ -203,7 +205,7 @@ class PostController extends Controller
      *      ),
      *  )
      */
-    public function store(PostRequest $request)
+    public function store(PostRequest $request): JsonResponse
     {
         try {
             $post = $this->repo->store($request);
@@ -276,7 +278,7 @@ class PostController extends Controller
      *      ),
      *  )
      */
-    public function update(string $id, PostRequest $request)
+    public function update(string $id, PostRequest $request): JsonResponse
     {
         try {
             $post = $this->repo->get_by_id($id);
@@ -317,7 +319,7 @@ class PostController extends Controller
      *      description="OK"),
      *  )
      */
-    public function delete(string $id)
+    public function delete(string $id): JsonResponse
     {
         try {
             $this->repo->get_by_id($id);
@@ -326,5 +328,18 @@ class PostController extends Controller
             Log::error($e->getMessage());
             throw $e;
         }
+    }
+
+    protected function check_query_string(): array
+    {
+        $result['page'] = isset($_GET['page']) ? intval($_GET['page']) : 1;
+        $result['per_page'] = isset($_GET['per_page']) ? intval($_GET['per_page']) : 10;
+
+        // Validation: Page to display can not be less than 1
+        if ($result['page'] < 1) {
+            $result['page'] = 1;
+        }
+
+        return $result;
     }
 }
