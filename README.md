@@ -11,7 +11,7 @@ Free fake REST API for testing and prototyping.
 - PHP ^8.0
 - Lumen ^9.0
 
-### Knowledge base
+### Knowledge base 
 - [jsonplaceholder](https://jsonplaceholder.typicode.com/)
 
 ### Usage 
