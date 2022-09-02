@@ -4,7 +4,6 @@ namespace App\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -54,7 +53,7 @@ class Handler extends ExceptionHandler
         ValidationException::class => [
             'code' => 422,
             'message' => 'Some data failed validation in the request',
-            'adaptMessage' => false,
+            'adaptMessage' => true,
         ],
         
         \InvalidArgumentException::class => [
@@ -106,9 +105,6 @@ class Handler extends ExceptionHandler
      */
     protected function formatException(\Throwable $exception): array
     {
-        # Grap detail response body
-        $details = $exception->response->getOriginalContent();
-
         # We get the class name for the exception that was raised
         $exceptionClass = get_class($exception);
     
@@ -125,15 +121,14 @@ class Handler extends ExceptionHandler
             $definition['message'] = $exception->getMessage() ?? $definition['message'];
         }
 
-        $result = [
+        if (! empty($exception->response)){
+            $definition['details'] = $exception->response->getOriginalContent() ?? $definition['message'];
+        }
+
+        return [
             'status' => $definition['code'] ?? 500,
             'message' => $definition['message'] ?? 'Error',
+            'details' => $definition['details'] ?? 'Error',
         ];
-
-        if ($details){
-            $result['detail'] = $details;
-        }
-        
-        return $result;
     }
 }

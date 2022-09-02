@@ -3,7 +3,26 @@
 $router->group([
     'prefix' => 'api'
 ], function () use ($router) {
+    // Authentication 
+    $router->group([
+        'prefix' => 'auth'
+    ], function ($router) {
+        $router->post('login', 'AuthController@login');
+        $router->post('refresh', 'AuthController@refresh');
+        $router->post('logout', 'AuthController@logout');
+    });
+
     // Profile 
+    $router->group([
+        'middleware' => 'api',
+        'prefix' => 'profile'
+    ], function ($router) {
+        $router->get('me', [
+            'as' => 'profile', 'uses' => "AuthController@me"
+        ]);
+    });
+
+    // Users 
     $router->group([
         'prefix' => 'users'
     ], function ($router) {
@@ -14,7 +33,7 @@ $router->group([
         $router->delete('{id}', 'PostController@delete');
     });
 
-    // Post 
+    // Posts
     $router->group([
         'prefix' => 'posts'
     ], function ($router) {
@@ -25,7 +44,7 @@ $router->group([
         $router->delete('{id}', 'PostController@delete');
     });
 
-    // todos 
+    // Todos 
     $router->group([
         'prefix' => 'todos'
     ], function ($router) {
@@ -36,7 +55,7 @@ $router->group([
         $router->delete('{id}', 'TodoController@delete');
     });
 
-    // comment 
+    // Comments
     $router->group([
         'prefix' => 'comments'
     ], function ($router) {
