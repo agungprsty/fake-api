@@ -6,6 +6,9 @@
 
 ## Introduction
 Free fake REST API for testing and prototyping.
+## URL
+- [jsonfaker](https://json-faker.herokuapp.com/)
+- [jsonfaker documentation](https://json-faker.herokuapp.com/apidocs/)
 
 ### Requirement
 - PHP ^8.0
