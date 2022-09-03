@@ -675,6 +675,57 @@
                 }
             }
         },
+        "/api/posts/{id}/comments": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "description": "Get comments by ID post",
+                "operationId": "08a5f91f034983966bffdd80772fb5fd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID post",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List comments by ID post",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "post_id": 1,
+                                                    "id": 1,
+                                                    "name": "fajar cihuy",
+                                                    "email": "cihuy@example.com",
+                                                    "body": "quia et suscipit suscipit recusandae consequuntur expedita"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/todos": {
             "get": {
                 "tags": [
@@ -1323,6 +1374,116 @@
                     },
                     "401": {
                         "description": "You are not authorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/users/{id}/posts": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get posts by ID user",
+                "operationId": "d7ef6e2584748dccfff7021747efdc6d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List posts by ID user",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "uid": 1,
+                                                    "id": 1,
+                                                    "title": "tempora rem veritatis",
+                                                    "body": "facere qui nesciunt est voluptatum voluptatem nisi"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/users/{id}/todos": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get todos by ID user",
+                "operationId": "605e2513b20a60a14d1e334166310714",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "List todos by ID user",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "uid": 1,
+                                                    "id": 1,
+                                                    "title": "laudantium voluptate suscipit",
+                                                    "completed": true
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [

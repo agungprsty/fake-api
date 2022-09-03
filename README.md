@@ -9,7 +9,7 @@ Free fake REST API for testing and prototyping.
 
 ### Requirement
 - PHP ^8.0
-- Lumen ^9.0
+- Lumen ^8.0
 
 ### Knowledge base 
 - [jsonplaceholder](https://jsonplaceholder.typicode.com/)
@@ -21,11 +21,6 @@ Free fake REST API for testing and prototyping.
 - set ``APP_KEY`` execute command :
 ```bash
 php artisan key:generate
-```
-- set config file:
-
-```
-logging.php.example -> logging.php
 ```
 
 ### Running service
