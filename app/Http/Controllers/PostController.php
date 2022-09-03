@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use Throwable;
 use App\Http\Requests\PostRequest;
 use App\Repositories\PostRepository;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Response;
-use OpenApi\Annotations as OA;
+use Illuminate\Http\JsonResponse;
 
 class PostController extends Controller
 {
@@ -18,34 +16,6 @@ class PostController extends Controller
     {
         $this->repo = $post;
     }
-
-    /**
-    * Wrap json response.
-    *
-    * @return \Illuminate\Http\JsonResponse
-    */
-    protected function responses(
-        mixed $data = null,
-        mixed $pagination = null,
-        int $status = 200,
-    ): JsonResponse
-    {
-        $content = [
-            'meta' => [
-                'status' => $status,
-                'message' => Response::$statusTexts[$status]
-            ],
-        ];
-
-        if ($data){
-            $content['data'] = $data;
-        }
-        if ($pagination){
-            $content['meta']['pagination'] = $pagination;
-        }
-
-        return response()->json($content, $status);
-    } 
 
     /**
      * Get all post.
@@ -104,9 +74,9 @@ class PostController extends Controller
     public function all(): JsonResponse
     {
         try {
-            $qs = $this->check_query_string();
+            $qs = check_query_string();
             $post = $this->repo->all($qs);
-            return $this->responses($post, $qs);
+            return json_response($post, $qs);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -162,10 +132,10 @@ class PostController extends Controller
         try {
             $post = $this->repo->get_by_id($id);
             if (!(array)$post){
-                return $this->responses([], '404');
+                return json_response([], '404');
             }
 
-            return $this->responses($post);
+            return json_response($post);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -227,7 +197,7 @@ class PostController extends Controller
     {
         try {
             $post = $this->repo->store($request);
-            return $this->responses($post, 201);
+            return json_response($post, 201);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -301,11 +271,11 @@ class PostController extends Controller
         try {
             $post = $this->repo->get_by_id($id);
             if (!(array)$post){
-                return $this->responses([], '404');
+                return json_response([], '404');
             }
 
             $data = $this->repo->update($post, $request);
-            return $this->responses($data);
+            return json_response($data);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -341,29 +311,10 @@ class PostController extends Controller
     {
         try {
             $this->repo->get_by_id($id);
-            return $this->responses();
+            return json_response();
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
         }
-    }
-
-    protected function check_query_string(): array
-    {
-        $result['page'] = isset($_GET['page']) ? intval($_GET['page']) : 1;
-        $result['per_page'] = isset($_GET['per_page']) ? intval($_GET['per_page']) : 10;
-
-        // Validation: Page to display can not be less than 1 or 
-        // Request page greater than 100
-        if ($result['page'] < 1 || $result['page'] > 100) {
-            $result['page'] = 1;
-        }
-
-        // Validation: Request per page greater than 100
-        if ($result['per_page'] > 100) {
-            $result['per_page'] = 10;
-        }
-
-        return $result;
     }
 }

@@ -6,7 +6,7 @@ use Throwable;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
@@ -90,7 +90,7 @@ class UserController extends Controller
      *   @OA\Response(response="401", description="You are not authorized")
      * )
      */
-    public function all()
+    public function all(): JsonResponse
     {
         try {
             $qs = check_query_string();
@@ -165,7 +165,7 @@ class UserController extends Controller
      *     @OA\Response(response="401", description="You are not authorized")
      *  )
      */
-    public function get_by_id(string $id)
+    public function get_by_id(string $id): JsonResponse
     {
         try {
             $user = $this->repo->get_by_id($id);
@@ -293,7 +293,7 @@ class UserController extends Controller
      *     @OA\Response(response="401", description="You are not authorized")
      *  )
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         try {
             $user = $this->repo->store($request);
@@ -427,7 +427,7 @@ class UserController extends Controller
      *     @OA\Response(response="401", description="You are not authorized")
      *  )
      */
-    public function update(string $id, Request $request)
+    public function update(string $id, Request $request): JsonResponse
     {
         try {
             $user = $this->repo->get_by_id($id);
@@ -471,7 +471,7 @@ class UserController extends Controller
      *     @OA\Response(response="401", description="You are not authorized")
      *  )
      */
-    public function delete(string $id)
+    public function delete(string $id): JsonResponse
     {
         try {
             $this->repo->get_by_id($id);

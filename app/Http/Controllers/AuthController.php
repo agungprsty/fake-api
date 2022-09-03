@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthRequest;
-use App\Repositories\AuthRepository;
 use Illuminate\Support\Facades\Log;
+use App\Repositories\AuthRepository;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller

@@ -6,7 +6,7 @@ use Throwable;
 use App\Http\Requests\TodoRequest;
 use App\Repositories\TodoRepository;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class TodoController extends Controller
 {
@@ -71,7 +71,7 @@ class TodoController extends Controller
      *  )
      * )
      */
-    public function all()
+    public function all(): JsonResponse
     {
         try {
             $qs = check_query_string();
@@ -127,7 +127,7 @@ class TodoController extends Controller
      *      ),
      *  )
      */
-    public function get_by_id(string $id)
+    public function get_by_id(string $id): JsonResponse
     {
         try {
             $todo = $this->repo->get_by_id($id);
@@ -193,7 +193,7 @@ class TodoController extends Controller
      *      ),
      *  )
      */
-    public function store(TodoRequest $request)
+    public function store(TodoRequest $request): JsonResponse
     {
         try {
             $todo = $this->repo->store($request);
@@ -266,7 +266,7 @@ class TodoController extends Controller
      *      ),
      *  )
      */
-    public function update(string $id, TodoRequest $request)
+    public function update(string $id, TodoRequest $request): JsonResponse
     {
         try {
             $todo = $this->repo->get_by_id($id);
@@ -307,7 +307,7 @@ class TodoController extends Controller
      *      description="OK"),
      *  )
      */
-    public function delete(string $id)
+    public function delete(string $id): JsonResponse
     {
         try {
             $this->repo->get_by_id($id);

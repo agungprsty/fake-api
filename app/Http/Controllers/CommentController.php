@@ -6,6 +6,7 @@ use Throwable;
 use App\Http\Requests\CommentRequest;
 use App\Repositories\CommentRepository;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\JsonResponse;
 
 class CommentController extends Controller
 {
@@ -71,7 +72,7 @@ class CommentController extends Controller
      *  )
      * )
      */
-    public function all()
+    public function all(): JsonResponse
     {
         try {
             $qs = check_query_string();
@@ -128,7 +129,7 @@ class CommentController extends Controller
      *      ),
      *  )
      */
-    public function get_by_id(string $id)
+    public function get_by_id(string $id): JsonResponse
     {
         try {
             $comment = $this->repo->get_by_id($id);
@@ -200,7 +201,7 @@ class CommentController extends Controller
      *      ),
      *  )
      */
-    public function store(CommentRequest $request)
+    public function store(CommentRequest $request): JsonResponse
     {
         try {
             $comment = $this->repo->store($request);
@@ -279,7 +280,7 @@ class CommentController extends Controller
      *      ),
      *  )
      */
-    public function update(string $id, CommentRequest $request)
+    public function update(string $id, CommentRequest $request): JsonResponse
     {
         try {
             $comment = $this->repo->get_by_id($id);
@@ -320,7 +321,7 @@ class CommentController extends Controller
      *      description="OK"),
      *  )
      */
-    public function delete(string $id)
+    public function delete(string $id): JsonResponse
     {
         try {
             $this->repo->get_by_id($id);

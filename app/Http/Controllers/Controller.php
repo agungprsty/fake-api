@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\FormRequest;
 use Laravel\Lumen\Routing\Controller as BaseController;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Info(
