@@ -21,7 +21,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             'name' => 'Ujang Uyee',
             'email' => 'ujang@example.com',
             'role' => 'administrator',
-            'password' => '$2b$12$wzkLCWYzfS9OoMNgLu5roer7rbOIXKIwksaCd5IoPhfkHHiRLPAja', // 1234qwer
+            'password' => '$2b$12$wzkLCWYzfS9OoMNgLu5roenPBppHAUYI25cllrfzvY3j4JzdzwFN.', // rahasia1234
         ]
     ];
 
