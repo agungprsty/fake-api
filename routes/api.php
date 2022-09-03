@@ -31,7 +31,9 @@ $router->group([
         $router->post('', 'UserController@store');
         $router->put('{id}', 'UserController@update');
         $router->get('{id}', 'UserController@get_by_id');
-        $router->delete('{id}', 'PostController@delete');
+        $router->delete('{id}', 'UserController@delete');
+        $router->get('{id}/posts', 'UserController@posts');
+        $router->get('{id}/todos', 'UserController@todos');
     });
 
     // Posts
@@ -43,6 +45,7 @@ $router->group([
         $router->put('{id}', 'PostController@update');
         $router->get('{id}', 'PostController@get_by_id');
         $router->delete('{id}', 'PostController@delete');
+        $router->get('{id}/comments', 'PostController@comments');
     });
 
     // Todos 
@@ -64,6 +67,6 @@ $router->group([
         $router->post('', 'CommentController@store');
         $router->put('{id}', 'CommentController@update');
         $router->get('{id}', 'CommentController@get_by_id');
-        $router->delete('{id}', 'TodoController@delete');
+        $router->delete('{id}', 'CommentController@delete');
     });
 });

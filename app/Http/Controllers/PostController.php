@@ -132,7 +132,7 @@ class PostController extends Controller
         try {
             $post = $this->repo->get_by_id($id);
             if (!(array)$post){
-                return json_response([], '404');
+                return json_response([], [], '404');
             }
 
             return json_response($post);
@@ -271,7 +271,7 @@ class PostController extends Controller
         try {
             $post = $this->repo->get_by_id($id);
             if (!(array)$post){
-                return json_response([], '404');
+                return json_response([], [], '404');
             }
 
             $data = $this->repo->update($post, $request);
@@ -312,6 +312,25 @@ class PostController extends Controller
         try {
             $this->repo->get_by_id($id);
             return json_response();
+        } catch (Throwable $e) {
+            Log::error($e->getMessage());
+            throw $e;
+        }
+    }
+
+    /**
+     * Get comments by ID posts
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function comments(string $id): JsonResponse
+    {
+        try {
+            $comments = $this->repo->comments($id);
+            if (!$comments){
+                return json_response([], [], '404');
+            }
+            return json_response($comments);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;

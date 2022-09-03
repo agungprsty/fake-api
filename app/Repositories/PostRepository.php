@@ -5,13 +5,25 @@ namespace App\Repositories;
 class PostRepository extends BaseRepository
 {
     /**
-    * Initiation post by user ID.
+    * Get data post.
     *
     * @return Post
     */
     protected function posts()
     {
-        return json_decode(file_get_contents(storage_path() . "/app/posts.json"), true);
+        return json_decode(file_get_contents(storage_path("app") . "/posts.json"), true);
+    }
+
+    /**
+    * Get data comments.
+    *
+    * @return Array
+    */
+    protected function relations(): array
+    {
+        $comments = json_decode(file_get_contents(storage_path("app") . "/comments.json"), true);
+        
+        return ["comments" => $comments];
     }
 
      /**
@@ -94,5 +106,30 @@ class PostRepository extends BaseRepository
             "title" => $input['title'],
             "body" => $input['body'],
         ];
+    }
+
+    /**
+     * Get comments by ID post
+     *
+     * @param Array $data
+     * @return Comments
+     */
+
+    public function comments(string $id): array
+    {
+        $comments = $this->relations()['comments'];
+        
+        $result = [];
+        if ($id > 100){
+            return $result;
+        }
+
+        foreach ($comments as $data) {
+            if ($data["post_id"] == $id) {
+                array_push($result, $data);
+            }
+        }
+        
+        return $result;
     }
 }

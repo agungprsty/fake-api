@@ -134,7 +134,7 @@ class CommentController extends Controller
         try {
             $comment = $this->repo->get_by_id($id);
             if (!(array)$comment){
-                return json_response([], '404');
+                return json_response([], [], '404');
             }
 
             return json_response($comment);
@@ -285,7 +285,7 @@ class CommentController extends Controller
         try {
             $comment = $this->repo->get_by_id($id);
             if (!(array)$comment){
-                return json_response([], '404');
+                return json_response([], [], '404');
             }
 
             $data = $this->repo->update($comment, $request);

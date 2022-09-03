@@ -132,7 +132,7 @@ class TodoController extends Controller
         try {
             $todo = $this->repo->get_by_id($id);
             if (!(array)$todo){
-                return json_response([], '404');
+                return json_response([], [], '404');
             }
 
             return json_response($todo);
@@ -271,7 +271,7 @@ class TodoController extends Controller
         try {
             $todo = $this->repo->get_by_id($id);
             if (!(array)$todo){
-                return json_response([], '404');
+                return json_response([], [], '404');
             }
 
             $data = $this->repo->update($todo, $request);

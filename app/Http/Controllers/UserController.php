@@ -170,7 +170,7 @@ class UserController extends Controller
         try {
             $user = $this->repo->get_by_id($id);
             if (!(array)$user){
-                return json_response([], '404');
+                return json_response([], [], '404');
             }
 
             return json_response($user);
@@ -432,7 +432,7 @@ class UserController extends Controller
         try {
             $user = $this->repo->get_by_id($id);
             if (!(array)$user){
-                return json_response([], '404');
+                return json_response([], [], '404');
             }
 
             $data = $this->repo->update($user, $request);
@@ -476,6 +476,44 @@ class UserController extends Controller
         try {
             $this->repo->get_by_id($id);
             return json_response();
+        } catch (Throwable $e) {
+            Log::error($e->getMessage());
+            throw $e;
+        }
+    }
+
+    /**
+     * Get posts by ID user
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function posts(string $id): JsonResponse
+    {
+        try {
+            $posts = $this->repo->posts($id);
+            if (!$posts){
+                return json_response([], [], '404');
+            }
+            return json_response($posts);
+        } catch (Throwable $e) {
+            Log::error($e->getMessage());
+            throw $e;
+        }
+    }
+
+    /**
+     * Get todos by ID user
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function todos(string $id): JsonResponse
+    {
+        try {
+            $todos = $this->repo->todos($id);
+            if (!$todos){
+                return json_response([], [], '404');
+            }
+            return json_response($todos);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;

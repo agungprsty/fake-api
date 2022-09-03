@@ -5,13 +5,30 @@ namespace App\Repositories;
 class UserRepository extends BaseRepository
 {
     /**
-    * Initiation user by user ID.
+    * Get data post.
     *
     * @return User
     */
     protected function users()
     {
-        return json_decode(file_get_contents(storage_path() . "/app/users.json"), true);
+        return json_decode(file_get_contents(storage_path("app") . "/users.json"), true);
+    }
+
+    /**
+    * Get data posts.
+    * Get data todos.
+    *
+    * @return Array
+    */
+    protected function relations(): array
+    {
+        $posts = json_decode(file_get_contents(storage_path("app") . "/posts.json"), true);
+        $todos = json_decode(file_get_contents(storage_path("app") . "/todos.json"), true);
+        
+        return [
+            "posts" => $posts,
+            "todos" => $todos,
+        ];
     }
 
      /**
@@ -109,5 +126,47 @@ class UserRepository extends BaseRepository
         }
 
         return (object) array_replace($result, $result_data, $input_data);
+    }
+
+    /**
+     * Get posts by ID user
+     *
+     * @param Array $data
+     * @return Post
+     */
+
+    public function posts(string $id): array
+    {
+        $posts = $this->relations()['posts'];
+        
+        $result = [];
+        foreach ($posts as $data) {
+            if ($data["uid"] == $id) {
+                array_push($result, $data);
+            }
+        }
+        
+        return $result;
+    }
+
+    /**
+     * Get todos by ID user
+     *
+     * @param Array $data
+     * @return Todo
+     */
+
+    public function todos(string $id): array
+    {
+        $todos = $this->relations()['todos'];
+        
+        $result = [];
+        foreach ($todos as $data) {
+            if ($data["uid"] == $id) {
+                array_push($result, $data);
+            }
+        }
+        
+        return $result;
     }
 }
