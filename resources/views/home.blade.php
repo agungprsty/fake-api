@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Free fake REST API for testing and prototyping."/>
+    <meta property="og:image" content="{{ url("assets/img/restapi.png") }}"/>
     <title>JSONFaker - Free Fake REST API</title>
 
     <!--Google font-->
