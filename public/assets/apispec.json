@@ -340,6 +340,30 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Comment"
+                ],
+                "description": "Delete a comment",
+                "operationId": "ae800c7750c541bbe155602ffb488f9a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
             }
         },
         "/api/comment/{id}": {
@@ -407,32 +431,6 @@
                                 }
                             }
                         }
-                    }
-                }
-            }
-        },
-        "/api/commets/{id}": {
-            "delete": {
-                "tags": [
-                    "Comment"
-                ],
-                "description": "Delete a comment",
-                "operationId": "fb21bc7bde195ad9736d1cea564e7f95",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Comment ID",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 1
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
                     }
                 }
             }

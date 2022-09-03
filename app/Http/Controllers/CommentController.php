@@ -305,7 +305,7 @@ class CommentController extends Controller
     /**
      * @OA\Delete(
      *     tags={"Comment"},
-     *     path="/api/commets/{id}",
+     *     path="/api/comments/{id}",
      *     description="Delete a comment",
      *     @OA\Parameter(
      *         name="id",
