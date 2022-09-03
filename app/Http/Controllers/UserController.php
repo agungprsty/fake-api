@@ -18,33 +18,6 @@ class UserController extends Controller
     }
 
     /**
-    * Wrap json response.
-    *
-    * @return \Illuminate\Http\JsonResponse
-    */
-    protected function responses(
-        mixed $data = null,
-        mixed $pagination = null,
-        int $status = 200,
-    ){
-        $content = [
-            'meta' => [
-                'status' => $status,
-                'message' => Response::$statusTexts[$status]
-            ],
-        ];
-
-        if ($data){
-            $content['data'] = $data;
-        }
-        if ($pagination){
-            $content['meta']['pagination'] = $pagination;
-        }
-
-        return response()->json($content, $status);
-    } 
-
-    /**
      * Get all user.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -120,9 +93,9 @@ class UserController extends Controller
     public function all()
     {
         try {
-            $qs = $this->check_query_string();
+            $qs = check_query_string();
             $user = $this->repo->all($qs);
-            return $this->responses($user, $qs);
+            return json_response($user, $qs);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -197,10 +170,10 @@ class UserController extends Controller
         try {
             $user = $this->repo->get_by_id($id);
             if (!(array)$user){
-                return $this->responses([], '404');
+                return json_response([], '404');
             }
 
-            return $this->responses($user);
+            return json_response($user);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -324,7 +297,7 @@ class UserController extends Controller
     {
         try {
             $user = $this->repo->store($request);
-            return $this->responses($user, 201);
+            return json_response($user, 201);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -459,11 +432,11 @@ class UserController extends Controller
         try {
             $user = $this->repo->get_by_id($id);
             if (!(array)$user){
-                return $this->responses([], '404');
+                return json_response([], '404');
             }
 
             $data = $this->repo->update($user, $request);
-            return $this->responses($data);
+            return json_response($data);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -502,29 +475,10 @@ class UserController extends Controller
     {
         try {
             $this->repo->get_by_id($id);
-            return $this->responses();
+            return json_response();
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
         }
-    }
-
-    protected function check_query_string(): array
-    {
-        $result['page'] = isset($_GET['page']) ? intval($_GET['page']) : 1;
-        $result['per_page'] = isset($_GET['per_page']) ? intval($_GET['per_page']) : 10;
-
-        // Validation: Page to display can not be less than 1 or 
-        // Request page greater than 100
-        if ($result['page'] < 1 || $result['page'] > 100) {
-            $result['page'] = 1;
-        }
-
-        // Validation: Request per page greater than 100
-        if ($result['per_page'] > 100) {
-            $result['per_page'] = 10;
-        }
-
-        return $result;
     }
 }

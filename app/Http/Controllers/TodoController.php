@@ -18,33 +18,6 @@ class TodoController extends Controller
     }
 
     /**
-    * Wrap json response.
-    *
-    * @return \Illuminate\Http\JsonResponse
-    */
-    protected function responses(
-        mixed $data = null,
-        mixed $pagination = null,
-        int $status = 200,
-    ){
-        $content = [
-            'meta' => [
-                'status' => $status,
-                'message' => Response::$statusTexts[$status]
-            ],
-        ];
-
-        if ($data){
-            $content['data'] = $data;
-        }
-        if ($pagination){
-            $content['meta']['pagination'] = $pagination;
-        }
-
-        return response()->json($content, $status);
-    } 
-
-    /**
      * Get all todo.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -101,9 +74,9 @@ class TodoController extends Controller
     public function all()
     {
         try {
-            $qs = $this->check_query_string();
+            $qs = check_query_string();
             $todo = $this->repo->all($qs);
-            return $this->responses($todo, $qs);
+            return json_response($todo, $qs);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -159,10 +132,10 @@ class TodoController extends Controller
         try {
             $todo = $this->repo->get_by_id($id);
             if (!(array)$todo){
-                return $this->responses([], '404');
+                return json_response([], '404');
             }
 
-            return $this->responses($todo);
+            return json_response($todo);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -224,7 +197,7 @@ class TodoController extends Controller
     {
         try {
             $todo = $this->repo->store($request);
-            return $this->responses($todo);
+            return json_response($todo);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -298,11 +271,11 @@ class TodoController extends Controller
         try {
             $todo = $this->repo->get_by_id($id);
             if (!(array)$todo){
-                return $this->responses([], '404');
+                return json_response([], '404');
             }
 
             $data = $this->repo->update($todo, $request);
-            return $this->responses($data);
+            return json_response($data);
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
@@ -338,29 +311,10 @@ class TodoController extends Controller
     {
         try {
             $this->repo->get_by_id($id);
-            return $this->responses();
+            return json_response();
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             throw $e;
         }
-    }
-
-    protected function check_query_string(): array
-    {
-        $result['page'] = isset($_GET['page']) ? intval($_GET['page']) : 1;
-        $result['per_page'] = isset($_GET['per_page']) ? intval($_GET['per_page']) : 10;
-
-        // Validation: Page to display can not be less than 1 or 
-        // Request page greater than 100
-        if ($result['page'] < 1 || $result['page'] > 100) {
-            $result['page'] = 1;
-        }
-
-        // Validation: Request per page greater than 100
-        if ($result['per_page'] > 100) {
-            $result['per_page'] = 10;
-        }
-
-        return $result;
     }
 }
