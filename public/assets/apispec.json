@@ -31,7 +31,7 @@
                                     },
                                     "password": {
                                         "type": "string",
-                                        "example": "1234qwer"
+                                        "example": "rahasia1234"
                                     }
                                 },
                                 "type": "object"

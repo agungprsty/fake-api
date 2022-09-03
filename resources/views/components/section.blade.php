@@ -79,7 +79,7 @@
         </div>
         <p class="lead text-center">
             <strong>Notes</strong> 
-            <br> - If routes is protected, so do you login using <em>email: <span class="text-secondary">ujang@example.com</span></em>, <em>password: <span class="text-secondary">rahasia1234</span></em>
+            <br> - If routes is protected, so do you login using <em>email: <span class="text-secondary">ujang@example.com</span></em>, <em>password: <span class="text-secondary">rahasia1234</span></em>,
             <br> - Resources have relations. For example: posts have many comments, ... see <a href="{{URL::to("/apidocs")}}" class="text-secondary" target="_blank">guide</a> for the full list.
         </p>
     </div>

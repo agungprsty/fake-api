@@ -43,7 +43,7 @@ class AuthController extends Controller
      *                 @OA\Property(
      *                     property="password",
      *                     type="string",
-     *                     example="1234qwer"
+     *                     example="rahasia1234"
      *                 )
      *             )
      *         )
