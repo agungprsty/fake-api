@@ -24,6 +24,7 @@ $router->group([
 
     // Users 
     $router->group([
+        'middleware' => 'api',
         'prefix' => 'users'
     ], function ($router) {
         $router->get('', 'UserController@all');
