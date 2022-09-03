@@ -6,7 +6,9 @@
     "type": "project",
     "require": {
         "php": "^8.0",
+        "calebporzio/sushi": "^2.4",
         "laravel/lumen-framework": "^8.0",
+        "tymon/jwt-auth": "dev-develop",
         "zircote/swagger-php": "^4.4"
     },
     "require-dev": {

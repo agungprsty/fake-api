@@ -40,11 +40,26 @@
         dom_id: '#swagger-ui',
         validatorUrl : null,
         deepLinking: true,
-          presets: [
-              SwaggerUIBundle.presets.apis,
-              SwaggerUIStandalonePreset
-          ],
-          layout: "StandaloneLayout"
+        presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+        ],
+        layout: "StandaloneLayout",
+        //Checks any reponse obtained for an access token
+        responseInterceptor: (responseObj) => {
+          if("access_token" in responseObj.obj){
+            window.token = responseObj.obj.access_token;
+          }
+          return responseObj
+        },
+
+        //Adds the authorization to the request header if token has been set
+        requestInterceptor: (requestObj) => {
+          if(window.token) {
+            requestObj.headers.Authorization = `Bearer ${window.token}`;
+          }
+          return requestObj
+        }
       })
       // End Swagger UI call region
       window.ui = ui

@@ -55,6 +55,7 @@ class UserController extends Controller
      *     tags={"User"},
      *     path="/api/users",
      *     description="List of user",
+     *     security={{"bearerAuth": {}}},
      *     @OA\Parameter(
      *         name="page",
      *         description="Params page",
@@ -112,7 +113,8 @@ class UserController extends Controller
      *             )
      *         )
      *     }
-     *  )
+     *   ),
+     *   @OA\Response(response="401", description="You are not authorized")
      * )
      */
     public function all()
@@ -138,6 +140,7 @@ class UserController extends Controller
      *     tags={"User"},
      *     path="/api/users/{id}",
      *     description="Get by id user",
+     *     security={{"bearerAuth": {}}},
      *     @OA\Parameter(
      *         name="id",
      *         description="User ID",
@@ -186,6 +189,7 @@ class UserController extends Controller
      *             )
      *         }
      *      ),
+     *     @OA\Response(response="401", description="You are not authorized")
      *  )
      */
     public function get_by_id(string $id)
@@ -215,6 +219,7 @@ class UserController extends Controller
      *     tags={"User"},
      *     path="/api/users",
      *     description="Create new user",
+     *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -312,6 +317,7 @@ class UserController extends Controller
      *             )
      *         }
      *      ),
+     *     @OA\Response(response="401", description="You are not authorized")
      *  )
      */
     public function store(Request $request)
@@ -337,6 +343,7 @@ class UserController extends Controller
      *     tags={"User"},
      *     path="/api/users/{id}",
      *     description="Update a user",
+     *     security={{"bearerAuth": {}}},
      *     @OA\Parameter(
      *         name="id",
      *         description="User ID",
@@ -444,6 +451,7 @@ class UserController extends Controller
      *             )
      *         }
      *      ),
+     *     @OA\Response(response="401", description="You are not authorized")
      *  )
      */
     public function update(string $id, Request $request)
@@ -473,6 +481,7 @@ class UserController extends Controller
      *     tags={"User"},
      *     path="/api/users/{id}",
      *     description="Delete a user",
+     *     security={{"bearerAuth": {}}},
      *     @OA\Parameter(
      *         name="id",
      *         description="User ID",
@@ -484,7 +493,9 @@ class UserController extends Controller
      *         ) 
      *     ),
      *     @OA\Response(response="200", 
-     *      description="OK"),
+     *      description="OK"
+     *     ),
+     *     @OA\Response(response="401", description="You are not authorized")
      *  )
      */
     public function delete(string $id)
