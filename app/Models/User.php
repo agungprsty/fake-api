@@ -68,7 +68,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getJWTCustomClaims()
     {
         return [
-            'exp' => Carbon::now()->addHours(2)->timestamp,
+            //
         ];
     }
 }

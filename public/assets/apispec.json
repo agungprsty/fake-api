@@ -13,6 +13,176 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "description": "Login",
+                "operationId": "8dcb70df1020986038d098cc08d05dae",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "ujang@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "1234qwer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Credentials to login",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "access_token": "eyJ0eXAiOi.eyJpc3MiOiJodHRw.m3paLGqhKU0uFKEc--N0",
+                                        "token_type": "bearer",
+                                        "expires_in": "3600"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Incorrect email or password."
+                    }
+                }
+            }
+        },
+        "/api/auth/refresh": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "description": "Refresh token",
+                "operationId": "b2eae7a8032954d25b46c7ec6f489c68",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Credentials to login",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "access_token": "eyJ0eXAiOi.eyJpc3MiOiJodHRw.m3paLGqhKU0uFKEc--N0",
+                                        "token_type": "bearer",
+                                        "expires_in": "3600"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "description": "Logout",
+                "operationId": "69281b12abb272c76871f19cb17ca563",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Success to logout",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "message": "Successfully logged out"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/profile/me": {
+            "get": {
+                "tags": [
+                    "Profile"
+                ],
+                "description": "Get details profile",
+                "operationId": "3d5f1d1e843ccfb7f12b8485c7557e1d",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Details profile",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "name": "Ujang Uyee",
+                                        "email": "ujang@example.com",
+                                        "role": "administrator"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "You are not authorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/comments": {
             "get": {
                 "tags": [
@@ -1120,6 +1290,18 @@
                         "description": "OK"
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     }

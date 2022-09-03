@@ -9,6 +9,10 @@ use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Tymon\JWTAuth\Exceptions\TokenBlacklistedException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -59,6 +63,30 @@ class Handler extends ExceptionHandler
         \InvalidArgumentException::class => [
             'code' => 400,
             'message' => 'You provided some invalid input value',
+            'adaptMessage' => true,
+        ],
+
+        JWTException::class => [
+            'code' => 401,
+            'message' => 'Token not Parsed',
+            'adaptMessage' => true,
+        ],
+
+        TokenExpiredException::class => [
+            'code' => 401,
+            'message' => 'Token is Expired',
+            'adaptMessage' => true,
+        ],
+
+        TokenBlacklistedException::class => [
+            'code' => 401,
+            'message' => 'Token has been blacklisted',
+            'adaptMessage' => true,
+        ],
+
+        TokenInvalidException::class => [
+            'code' => 401,
+            'message' => 'Token is Invalid',
             'adaptMessage' => true,
         ],
     ];

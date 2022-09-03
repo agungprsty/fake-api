@@ -25,6 +25,52 @@ class AuthController extends Controller
      * @param  Request  $request
      * @return Response
      */
+
+    /**
+     * @OA\Post(
+     *     tags={"Authentication"},
+     *     path="/api/auth/login",
+     *     description="Login",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string",
+     *                     example="ujang@example.com"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     type="string",
+     *                     example="1234qwer"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Credentials to login"
+     *                     ),
+     *                     example={
+     *                          "access_token": "eyJ0eXAiOi.eyJpc3MiOiJodHRw.m3paLGqhKU0uFKEc--N0",
+     *                          "token_type": "bearer",
+     *                          "expires_in": "3600",
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *     @OA\Response(response="401", description="Incorrect email or password.")
+     *  )
+     */
     public function login(AuthRequest $request)
     {
         try {
@@ -39,6 +85,36 @@ class AuthController extends Controller
      * Refresh a token.
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+
+    /**
+     * @OA\Post(
+     *     tags={"Authentication"},
+     *     path="/api/auth/refresh",
+     *     description="Refresh token",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Credentials to login"
+     *                     ),
+     *                     example={
+     *                          "access_token": "eyJ0eXAiOi.eyJpc3MiOiJodHRw.m3paLGqhKU0uFKEc--N0",
+     *                          "token_type": "bearer",
+     *                          "expires_in": "3600",
+     *                     }
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
      */
     public function refresh()
     {
@@ -55,6 +131,32 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Post(
+     *     tags={"Authentication"},
+     *     path="/api/auth/logout",
+     *     description="Logout",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Success to logout"
+     *                     ),
+     *                     example={"message" = "Successfully logged out"},
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *     @OA\Response(response="401", description="Unauthorized")
+     *  )
+     */
     public function logout()
     {
         try {
@@ -69,6 +171,37 @@ class AuthController extends Controller
      * Get detail user.
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Get(
+     *     tags={"Profile"},
+     *     path="/api/profile/me",
+     *     description="Get details profile",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="object",
+     *                         description="Details profile"
+     *                     ),
+     *                     example={
+     *                          "id"=1,
+     *                          "name"="Ujang Uyee",
+     *                          "email"="ujang@example.com",
+     *                          "role"="administrator",
+     *                      },
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *     @OA\Response(response="401", description="You are not authorized")
+     *  )
      */
     public function me()
     {

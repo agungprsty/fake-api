@@ -20,6 +20,8 @@ class AuthRepository extends BaseRepository
             ],
             'data' => [
                 'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth()->factory()->getTTL() * 60
             ]
         ]);
     }
@@ -34,7 +36,7 @@ class AuthRepository extends BaseRepository
     {
         $credentials = request()->only(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
+        if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['message' => 'Incorrect email or password.'], 401);
         }
 
@@ -48,7 +50,8 @@ class AuthRepository extends BaseRepository
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        $newToken = auth()->refresh();
+        return $this->respondWithToken($newToken);
     }
 
     /**
