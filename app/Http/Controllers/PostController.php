@@ -323,6 +323,49 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Get(
+     *     tags={"Post"},
+     *     path="/api/posts/{id}/comments",
+     *     description="Get comments by ID post",
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="ID post",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="List comments by ID post",
+     *                         @OA\Items(type="object"),
+     *                         example={
+     *                              {
+     *                                  "post_id": 1,
+     *                                  "id": 1,
+     *                                  "name": "fajar cihuy",
+     *                                  "email": "cihuy@example.com",
+     *                                  "body": "quia et suscipit suscipit recusandae consequuntur expedita",
+     *                              }
+     *                         }
+     *                     ),
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
+     */
     public function comments(string $id): JsonResponse
     {
         try {

@@ -487,6 +487,49 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    /**
+     * @OA\Get(
+     *     tags={"User"},
+     *     path="/api/users/{id}/posts",
+     *     description="Get posts by ID user",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="ID user",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="List posts by ID user",
+     *                         @OA\Items(type="object"),
+     *                         example={
+     *                              {
+     *                                  "uid": 1,
+     *                                  "id": 1,
+     *                                  "title": "tempora rem veritatis",
+     *                                  "body": "facere qui nesciunt est voluptatum voluptatem nisi",
+     *                              }
+     *                         }
+     *                     ),
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
+     */
     public function posts(string $id): JsonResponse
     {
         try {
@@ -505,6 +548,49 @@ class UserController extends Controller
      * Get todos by ID user
      *
      * @return \Illuminate\Http\JsonResponse
+     */
+
+    /**
+     * @OA\Get(
+     *     tags={"User"},
+     *     path="/api/users/{id}/todos",
+     *     description="Get todos by ID user",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="ID user",
+     *         example = 1,
+     *          in = "path",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         ) 
+     *     ),
+     *     @OA\Response(response="200", 
+     *      description="OK",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="data",
+     *                         type="array",
+     *                         description="List todos by ID user",
+     *                         @OA\Items(type="object"),
+     *                         example={
+     *                              {
+     *                                  "uid": 1,
+     *                                  "id": 1,
+     *                                  "title": "laudantium voluptate suscipit",
+     *                                  "completed": true,
+     *                              }
+     *                         }
+     *                     ),
+     *                 )
+     *             )
+     *         }
+     *      ),
+     *  )
      */
     public function todos(string $id): JsonResponse
     {
