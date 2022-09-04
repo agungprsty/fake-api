@@ -2,8 +2,6 @@
 
 namespace App\Repositories;
 
-use Tymon\JWTAuth\Facades\JWTAuth;
-
 class AuthRepository extends BaseRepository
 {
     /**
@@ -38,7 +36,7 @@ class AuthRepository extends BaseRepository
     {
         $credentials = request()->only(['email', 'password']);
 
-        if (! $token = JWTAuth::attempt($credentials)) {
+        if (! $token = auth()->attempt($credentials)) {
             return response()->json(['message' => 'Incorrect email or password.'], 401);
         }
 

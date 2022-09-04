@@ -14,6 +14,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable, HasFactory, \Sushi\Sushi;
     
+    public $incrementing = false;
+    public $sushiInsertChunkSize = 50;
     protected $rows = [
         [
             'id' => 1,
