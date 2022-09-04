@@ -13,10 +13,11 @@
 |
 */
 
-$router->get('/', function () {
-    return view('home');
+$router->get('/', function () use ($router) {
+    return $router->app->version();
 });
 
-$router->get('/apidocs', function () {
-    return view('docs');
-});
+
+$router->get('me', [
+    'as' => 'profile', 'uses' => "UserController@get_info"
+]);

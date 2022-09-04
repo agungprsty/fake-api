@@ -1,25 +1,6 @@
-Distribution / packaging
 /vendor
+/.idea
 Homestead.json
 Homestead.yaml
-.phpunit.result.cache
-
-# Environments
 .env
-
-# IDE and editor
-.vscode/
-.idea/
-
-# configuration
-# config/*.php
-
-# docker file
-/docker/mysql/*
-!/docker/mysql/.gitkeep
-/docker/redis/*
-!/docker/redis/.gitkeep
-/docker/rabbitmq/data/*
-!/docker/rabbitmq/data/.gitkeep
-/docker/rabbitmq/log/*
-!/docker/rabbitmq/log/.gitkeep
+.phpunit.result.cache

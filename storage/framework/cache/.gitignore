@@ -1,4 +1,3 @@
 *
 !data/
 !.gitignore
-!sushi-app-models-user.sqlite

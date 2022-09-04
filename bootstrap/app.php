@@ -60,7 +60,7 @@ $app->singleton(
 */
 
 $app->configure('app');
-$app->configure('jwt');
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -72,12 +72,13 @@ $app->configure('jwt');
 |
 */
 
+// $app->middleware([
+//     App\Http\Middleware\ExampleMiddleware::class
+// ]);
 
-$app->routeMiddleware([
-    'auth' => App\Http\Middleware\Authenticate::class,
-    'api' => App\Http\Middleware\JWTAuthenticate::class,
-]);
-
+// $app->routeMiddleware([
+//     'auth' => App\Http\Middleware\Authenticate::class,
+// ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -90,8 +91,7 @@ $app->routeMiddleware([
 |
 */
 
-$app->register(App\Providers\AppServiceProvider::class);
-$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+// $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -110,7 +110,6 @@ $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
-    require __DIR__.'/../routes/api.php';
 });
 
 return $app;
