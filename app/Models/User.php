@@ -14,7 +14,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable, HasFactory, \Sushi\Sushi;
 
-    protected $incrementing = false;
+    public $incrementing = false;
 
     protected $rows = [
         [
