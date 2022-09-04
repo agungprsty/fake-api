@@ -25,15 +25,23 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'role' => 'string',
     ];
 
-    protected $rows = [
-        [
-            'id' => 12,
-            'name' => 'Ujang Uyee',
-            'email' => 'ujang@example.com',
-            'role' => 'administrator',
-            'password' => '$2b$12$wzkLCWYzfS9OoMNgLu5roenPBppHAUYI25cllrfzvY3j4JzdzwFN.', // rahasia1234
-        ]
-    ];
+    public function getRows()
+    {
+        return [
+            [
+                'id' => 12,
+                'name' => 'Ujang Uyee',
+                'email' => 'ujang@example.com',
+                'role' => 'administrator',
+                'password' => '$2b$12$wzkLCWYzfS9OoMNgLu5roenPBppHAUYI25cllrfzvY3j4JzdzwFN.', // rahasia1234
+            ],
+        ];
+    }
+
+    protected function sushiShouldCache()
+    {
+        return true;
+    }
 
     /**
      * The attributes that are mass assignable.
