@@ -19,7 +19,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             'id' => 1,
             'name' => 'Ujang Uyee',
             'email' => 'ujang@example.com',
-            // 'role' => 'administrator',
+            'role' => 'administrator',
             'password' => '$2b$12$wzkLCWYzfS9OoMNgLu5roenPBppHAUYI25cllrfzvY3j4JzdzwFN.', // rahasia1234
         ],
     ];
@@ -30,7 +30,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email'
+        'name', 'email', 'role',
     ];
 
     /**
