@@ -12,8 +12,12 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
 {
-    use Authenticatable, Authorizable, HasFactory, \Sushi\Sushi;
+    use Authenticatable, Authorizable, HasFactory;
+    
+    use \Sushi\Sushi;
 
+    public $incrementing = false;
+    
     protected $rows = [
         [
             'id' => 1,
@@ -21,8 +25,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             'email' => 'ujang@example.com',
             'role' => 'administrator',
             'password' => '$2b$12$wzkLCWYzfS9OoMNgLu5roenPBppHAUYI25cllrfzvY3j4JzdzwFN.', // rahasia1234
-        ]
+        ],
     ];
+
+    protected function sushiShouldCache()
+    {
+        return true;
+    }
 
     /**
      * The attributes that are mass assignable.
