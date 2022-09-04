@@ -26,11 +26,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         ],
     ];
 
-    protected function sushiShouldCache()
-    {
-        return true;
-    }
-
     /**
      * The attributes that are mass assignable.
      *
