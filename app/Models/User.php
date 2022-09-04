@@ -12,15 +12,13 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
 {
-    use Authenticatable, Authorizable, HasFactory;
-    
-    use \Sushi\Sushi;
+    use Authenticatable, Authorizable, HasFactory, \Sushi\Sushi;
 
     public $incrementing = false;
     
     protected $rows = [
         [
-            'id' => 1,
+            'id' => 12,
             'name' => 'Ujang Uyee',
             'email' => 'ujang@example.com',
             'role' => 'administrator',
@@ -39,7 +37,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'role',
     ];
 
     /**

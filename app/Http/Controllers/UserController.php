@@ -27,6 +27,7 @@ class UserController extends Controller
     public function getUserModel(): JsonResponse
     {
         try {
+            dd(User::first());
             $user = User::first();
             return json_response($user);
         } catch (Throwable $e) {
