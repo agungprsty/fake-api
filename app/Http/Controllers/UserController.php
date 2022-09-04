@@ -7,6 +7,7 @@ use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\JsonResponse;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -22,6 +23,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    public function getUserModel(): JsonResponse
+    {
+        try {
+            $user = User::first();
+            return json_response($user);
+        } catch (Throwable $e) {
+            Log::error($e->getMessage());
+            throw $e;
+        }
+    }
 
     /**
      * @OA\Get(
