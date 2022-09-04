@@ -14,9 +14,20 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable, HasFactory, \Sushi\Sushi;
 
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    protected $schema = [
+        'id' => 'integer',
+        'name' => 'string',
+        'email' => 'string',
+        'role' => 'string',
+    ];
+
     protected $rows = [
         [
-            'id' => 1,
+            'id' => 12,
             'name' => 'Ujang Uyee',
             'email' => 'ujang@example.com',
             'role' => 'administrator',
