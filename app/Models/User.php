@@ -16,7 +16,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     protected $rows = [
         [
-            'id' => 1, 
+            'id' => 1,
             'name' => 'Ujang Uyee',
             'email' => 'ujang@example.com',
             'role' => 'administrator',
