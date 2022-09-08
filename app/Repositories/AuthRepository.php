@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\User;
+
 class AuthRepository extends BaseRepository
 {
     /**
@@ -36,6 +38,7 @@ class AuthRepository extends BaseRepository
     {
         $credentials = request()->only(['email', 'password']);
 
+        dd(User::first());
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['message' => 'Incorrect email or password.'], 401);
         }

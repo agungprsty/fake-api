@@ -9,13 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Sushi\Sushi;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
 {
-    use Authenticatable, Authorizable, HasFactory, \Sushi\Sushi;
+    use Authenticatable, Authorizable, HasFactory, Sushi;
     
-    public $incrementing = false;
-    public $sushiInsertChunkSize = 50;
     protected $rows = [
         [
             'id' => 1,
