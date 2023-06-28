@@ -13,6 +13,7 @@
 
     <!-- Bootstrap CSS / Color Scheme -->
     <link rel="stylesheet" href="{{ url("assets/css/bootstrap.css") }}">
+    <link rel="stylesheet" href="{{ url("assets/css/custom.css") }}">
 
     <!-- JSONFaker favicon -->
     <link rel="icon" type="image/x-icon" href="{{ url("assets/img/JSONFaker-favicon.ico") }}">

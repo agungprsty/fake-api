@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -13,17 +12,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
 {
-    use Authenticatable, Authorizable, HasFactory, \Sushi\Sushi;
-
-    protected $rows = [
-        [
-            'id' => 12, 
-            'name' => 'Ujang Uyee',
-            'email' => 'ujang@example.com',
-            'role' => 'administrator',
-            'password' => '$2b$12$wzkLCWYzfS9OoMNgLu5roenPBppHAUYI25cllrfzvY3j4JzdzwFN.', // rahasia1234
-        ]
-    ];
+    use Authenticatable, Authorizable, HasFactory;
 
     /**
      * The attributes that are mass assignable.

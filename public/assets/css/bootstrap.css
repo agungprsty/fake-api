@@ -1,12 +1,12 @@
 ﻿/*!
-* Created by Kroplet (https://www.kroplet.com) 
-* The easiest way to create Bootstrap 4 themes. 
+* Created by Kroplet (https://www.kroplet.com)
+* The easiest way to create Bootstrap 4 themes.
 */
 
 /*!
-* Bootstrap v4.1.0 (https://getbootstrap.com) 
-* Copyright 2011-2017 The Bootstrap Authors 
-* Copyright 2011-2017 Twitter, Inc. 
+* Bootstrap v4.1.0 (https://getbootstrap.com)
+* Copyright 2011-2017 The Bootstrap Authors
+* Copyright 2011-2017 Twitter, Inc.
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)*/
 :root {
   --blue: #0000ff;
@@ -5094,7 +5094,7 @@ footer a {
 .code-window {
   border-radius: .45rem;
   background-color: #ffffff;
-  padding: 1.52rem;
+  padding: .52rem;
   box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.1); }
   .code-window .dots {
     display: -ms-flexbox;

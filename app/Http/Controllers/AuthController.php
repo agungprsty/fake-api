@@ -12,13 +12,13 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 class AuthController extends Controller
 {
     protected $authRepository;
-    
+
     public function __construct(AuthRepository $authRepository)
     {
         $this->middleware('auth:api', ['except' => ['login', 'refresh']]);
         $this->authRepository = $authRepository;
     }
-    
+
     /**
      * Get a JWT via given credentials.
      *
@@ -43,12 +43,12 @@ class AuthController extends Controller
      *                 @OA\Property(
      *                     property="password",
      *                     type="string",
-     *                     example="rahasia1234"
+     *                     example="rahasia123"
      *                 )
      *             )
      *         )
      *     ),
-     *     @OA\Response(response="200", 
+     *     @OA\Response(response="200",
      *      description="OK",
      *         content={
      *             @OA\MediaType(
@@ -94,7 +94,7 @@ class AuthController extends Controller
      *     path="/api/auth/refresh",
      *     description="Refresh token",
      *     security={{"bearerAuth": {}}},
-     *     @OA\Response(response="200", 
+     *     @OA\Response(response="200",
      *      description="OK",
      *         content={
      *             @OA\MediaType(
@@ -138,7 +138,7 @@ class AuthController extends Controller
      *     path="/api/auth/logout",
      *     description="Logout",
      *     security={{"bearerAuth": {}}},
-     *     @OA\Response(response="200", 
+     *     @OA\Response(response="200",
      *      description="OK",
      *         content={
      *             @OA\MediaType(
@@ -179,7 +179,7 @@ class AuthController extends Controller
      *     path="/api/profile/me",
      *     description="Get details profile",
      *     security={{"bearerAuth": {}}},
-     *     @OA\Response(response="200", 
+     *     @OA\Response(response="200",
      *      description="OK",
      *         content={
      *             @OA\MediaType(

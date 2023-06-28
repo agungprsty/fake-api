@@ -28,7 +28,7 @@ class AuthRepository extends BaseRepository
 
     /**
      * Get a JWT via given credentials.
-     * 
+     *
      * @param  Request  $request
      * @return Response
      */
@@ -66,7 +66,7 @@ class AuthRepository extends BaseRepository
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-     /**
+    /**
      * Get the authenticated User.
      *
      * @return \Illuminate\Http\JsonResponse

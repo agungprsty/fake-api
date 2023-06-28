@@ -1,5 +1,5 @@
 <!--When to use section-->
-<section class="py-6">
+<section class="py-5">
     <div class="container">
         <h2 class="text-center">When to use</h2>
         <p class="lead mb-2 text-center">JSONFaker is a free online REST API that you can use whenever you need some fake data. It can be in a README on GitHub, for a demo on CodeSandbox, in code examples on Stack Overflow, ...or simply to test things locally.</p>
@@ -7,7 +7,7 @@
 </section>
 
 <!--Resources section-->
-<section class="pt-2 pb-6">
+<section class="pt-2 pb-4">
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-6 mx-auto">
@@ -78,7 +78,7 @@
             </div>
         </div>
         <p class="lead text-center">
-            <strong>Notes</strong> 
+            <strong>Notes</strong>
             <br> - If routes is protected, so do you login using <em>email: <span class="text-secondary">ujang@example.com</span></em>, <em>password: <span class="text-secondary">rahasia1234</span></em>,
             <br> - Resources have relations. For example: posts have many comments, ... see <a href="{{URL::to("/apidocs")}}" class="text-secondary" target="_blank">guide</a> for the full list.
         </p>

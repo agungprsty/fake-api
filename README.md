@@ -25,6 +25,10 @@ Free fake REST API for testing and prototyping.
 ```bash
 php artisan key:generate
 ```
+- set ``JWT_SECRET`` execute command :
+```bash
+php artisan jwt:secret
+```
 
 ### Running service
 ```bash      
