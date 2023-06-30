@@ -1,11 +1,11 @@
 {
     "version": 2,
-    "builds": [
-        { "src": "/api/index.php", "use": "vercel-php@0.4.1" },
-        { "src": "/public/**", "use": "@vercel/static" }
-    ],
-    "routes": [
-        {
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.4.1"
+        }
+    },
+    "routes": [{
             "src": "/(css|js)/(.*)",
             "dest": "public/$1/$2"
         },
@@ -20,12 +20,6 @@
         "APP_DEBUG": "false",
         "APP_URL": "https://json-faker.vercel.app",
         "APP_TIMEZONE": "Asia/Jakarta",
-        "DB_CONNECTION": "mysql",
-        "DB_HOST": "sql.freedb.tech",
-        "DB_PORT": "3306",
-        "DB_DATABASE": "freedb_fake_api",
-        "DB_USERNAME": "freedb_admin_fake_api",
-        "DB_PASSWORD": "p&YjBN%N5r!PYHG",
         "VERCEL_DEMO_MODE": "true",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
@@ -33,7 +27,7 @@
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
         "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "errorlog",
+        "LOG_CHANNEL": "stack",
         "SESSION_DRIVER": "array",
         "VIEW_COMPILED_PATH": "/tmp/views",
         "SSR_TEMP_PATH": "/tmp/ssr"
