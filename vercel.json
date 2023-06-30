@@ -14,9 +14,6 @@
             "dest": "/api/index.php"
         }
     ],
-    "scripts": {
-        "apidocs": "./vendor/bin/openapi app -o public/assets/apispec.json"
-    },
     "env": {
         "APP_NAME": "json-faker",
         "APP_ENV": "production",
