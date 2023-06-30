@@ -11,15 +11,4 @@ Homestead.yaml
 .vscode/
 .idea/
 
-# configuration
-# config/*.php
-
-# docker file
-/docker/mysql/*
-!/docker/mysql/.gitkeep
-/docker/redis/*
-!/docker/redis/.gitkeep
-/docker/rabbitmq/data/*
-!/docker/rabbitmq/data/.gitkeep
-/docker/rabbitmq/log/*
-!/docker/rabbitmq/log/.gitkeep
+.vercel
