@@ -18,6 +18,7 @@
         "APP_NAME": "json-faker",
         "APP_ENV": "production",
         "APP_DEBUG": "false",
+        "APP_KEY": "@laravel_key",
         "APP_URL": "https://json-faker.vercel.app",
         "APP_TIMEZONE": "Asia/Jakarta",
 
@@ -31,5 +32,22 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
+    },
+    "build": {
+        "env": {
+            "LARAVEL_KEY": "@laravel_key"
+        },
+        "commands": [
+            "php artisan key:generate",
+            "./vendor/bin/openapi app -o public/assets/apispec.json"
+        ],
+        "functions": {
+            "preBuild": {
+                "command": "php artisan storage:link && php artisan cache:clear"
+            },
+            "postBuild": {
+                "command": "rm -rf storage"
+            }
+        }
     }
 }
