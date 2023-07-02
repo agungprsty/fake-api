@@ -10,3 +10,6 @@ Homestead.yaml
 # IDE and editor
 .vscode/
 .idea/
+
+# free hosting
+/000webhostapp/*
