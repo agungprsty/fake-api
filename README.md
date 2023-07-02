@@ -7,8 +7,8 @@
 ## Introduction
 Free fake REST API for testing and prototyping.
 ## URL
-- [jsonfaker](https://json-faker.herokuapp.com/)
-- [jsonfaker documentation](https://json-faker.herokuapp.com/apidocs/)
+- [jsonfaker](https://json-faker.vercel.app/)
+- [jsonfaker documentation](https://json-faker.vercel.app/apidocs/)
 
 ### Requirement
 - PHP ^8.0
@@ -29,13 +29,17 @@ php artisan key:generate
 ```bash
 php artisan jwt:secret
 ```
+- set ownership of the file run.sh and apidocs.sh
+```bash
+sudo chmod 777 ./run.sh ./apidocs.sh
+```
 
 ### Running service
 ```bash      
-php -S 0.0.0.0:8081 -t public
+./run.sh
 ```
 
 ### Generate docs swagger-php
 ```bash
-./vendor/bin/openapi app -o public/assets/apispec.json
+./apidocs.sh
 ```

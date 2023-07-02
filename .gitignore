@@ -10,5 +10,3 @@ Homestead.yaml
 # IDE and editor
 .vscode/
 .idea/
-
-.vercel
