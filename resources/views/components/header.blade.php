@@ -24,7 +24,7 @@
                         <div class="orange"></div>
                         <div class="green"></div>
                     </div>
-                    <pre class="language-javascript line-numbers"><code class="language-javascript">fetch('https://json-faker.vercel.app/api/posts/1')
+                    <pre class="language-javascript line-numbers"><code class="language-javascript">fetch('https://jsonfaker.000webhost.com/api/posts/1')
     .then(response => response.json())
     .then(json => console.log(json))</code></pre>
                 </div>

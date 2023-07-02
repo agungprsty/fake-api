@@ -7,8 +7,8 @@
 ## Introduction
 Free fake REST API for testing and prototyping.
 ## URL
-- [jsonfaker](https://json-faker.vercel.app/)
-- [jsonfaker documentation](https://json-faker.vercel.app/apidocs/)
+- [jsonfaker](https://jsonfaker.000webhost.com/)
+- [jsonfaker documentation](https://jsonfaker.000webhost.com/apidocs/)
 
 ### Requirement
 - PHP ^8.0
