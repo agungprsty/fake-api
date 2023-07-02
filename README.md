@@ -1,11 +1,10 @@
-# JSONFaker
-
 <p align="center">
     <img src="public/assets/img/restapi.png" alt="JSONFaker restapi">
 </p>
 
 ## Introduction
-Free fake REST API for testing and prototyping.
+JSONFaker is a free fake REST API for testing and prototyping.
+
 ## URL
 - [jsonfaker](https://jsonfaker.000webhost.com/)
 - [jsonfaker documentation](https://jsonfaker.000webhost.com/apidocs/)
