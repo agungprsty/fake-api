@@ -6,8 +6,8 @@
 JSONFaker is a free fake REST API for testing and prototyping.
 
 ## URL
-- [jsonfaker](https://jsonfaker.000webhost.com/)
-- [jsonfaker documentation](https://jsonfaker.000webhost.com/apidocs/)
+- [jsonfaker](https://jsonfaker.000webhostapp.com/)
+- [jsonfaker documentation](https://jsonfaker.000webhostapp.com/apidocs/)
 
 ### Requirement
 - PHP ^8.0
